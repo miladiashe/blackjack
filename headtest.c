@@ -1,4 +1,6 @@
 #include "headtest.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int abc(int a, int b)
 {

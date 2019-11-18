@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "headtest.h"
 
+#define N_intmoney 50 
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
@@ -11,9 +13,18 @@ int main(int argc, char *argv[]) {
 		/*플레이어 수를 입력받는다-간단한 scanf 함수로 playernumber 변수에 직접적으로 영향주기*/
 	int N_player;
 	/*플레이어의 수를 지정하는 변수*/ 
-	printf("몇 명의 상대와 함께하시겠습니까?");
+	printf("몇 명의 상대와 함께하시겠습니까?\n");
 	scanf("%d", &N_player);
-	/*if 입력받은 숫자가 N_max_player 보다 적으면 에러메시지 내고 다시 입력받는 걸 반복하는 기능 추가하기.*/  
+	
+	int money[N_player+1]; 
+		/*이부분을 새로 함수처리해서  돈을 관리하는 다른 함수들과 같은.c 파일로 이동할 것*/ 
+		int intm;
+		for (intm=0; intm<(N_player+1); intm++)
+			money[intm] = N_intmoney;
+			
+	/*돈을 관리하는 변수들. 플레이어 수가 유동적이기 떄문에 배열로 만들어 봤다. money[0]은 플레이어, 1부터 컴퓨터 상대 1, 2, 3, 4...*/ 
+	/*if 입력받은 숫자가 N_max_player 보다 적으면 에러메시지 내고 다시 입력받는 걸 반복하는 기능 추가하기.*/ 
+	 
 		/*카드를 섞는다-포인터 배열로 카드 섞는 순서 정하기?
 		배팅할 액수 결정 
 		일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)-개인별로 받은 카드를 저장하는 함수를 정의해야 하나?
@@ -27,10 +38,9 @@ int main(int argc, char *argv[]) {
 		
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
 		/*1. 다른 .c 파일에 담긴 함수 정의를 불러오는 법을 공부하기*/
-			/*테스트*/ 
-			abc (1, 2);
-			/*대체 왜ㅐㅐㅐㅐ오류가 나는거야 이런 간단한데서*/
+		/*성공!!!!!!!!!!!!! 프로젝트에 병합하니 된다....*/ 
 	/*3-세부적 구현방법- 만들다 필요해진 것*/ 
+	/*질문할것 2- 돈을 배열로 관리하면 편할 것 같다. 혹시 변수 갯수만큼 배열을 만들 수 있을까, 아 */
 	
 	return 0;
 }
