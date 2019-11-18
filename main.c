@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include "headtest.h"
 
+#define N_maxplayer 4
+/*최대 플레이어수*/ 
 #define N_intmoney 50 
+/*초기자본*/ 
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -13,7 +16,7 @@ int main(int argc, char *argv[]) {
 		/*플레이어 수를 입력받는다-간단한 scanf 함수로 playernumber 변수에 직접적으로 영향주기*/
 	int N_player;
 	/*플레이어의 수를 지정하는 변수*/ 
-	printf("몇 명의 상대와 함께하시겠습니까?\n");
+	printf("몇 명의 상대와 함께하시겠습니까?(최대 4명)\n");
 	scanf("%d", &N_player);
 	
 	int money[N_player+1]; 
