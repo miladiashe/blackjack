@@ -8,9 +8,24 @@ void betmoney()
 	extern N_player;
 	extern int mymoney[];
 	extern int bet[];
-	printf("얼마를 거시겠습니까? \n 현재 %i 달러를 가지고 계십니다.\n", mymoney[0]);
-	bet[0] = getIntegerInput();
+	printf("\n얼마를 거시겠습니까?\n현재 %i 달러를 가지고 계십니다.\n", mymoney[0]);
+	do
+	{
+		bet[0] = getIntegerInput();
+	}
+	while(bet[0] > mymoney[0]);
+	/*시간이 남으면 다시 입력할 떄 입력이 어떻게 틀렸는지 말해주는 조건문 구성*/ 
 	mymoney[0] = mymoney[0] - bet[0];
+	if (mymoney[0]>0)
+	{
+		printf("남은 돈은 %i 달러입니니다.\n", mymoney[0]);
+	}
+	else
+	{
+	printf("남은 돈을 모두 거셨습니다. 과연 승리할 수 있을까요?\n");
+	}
+
+	
 	/* 내 돈을 거는 부분*/
 	srand((unsigned)time(NULL));
 	int tmpplr;
@@ -20,11 +35,19 @@ void betmoney()
 		{
 		bet[tmpplr] = (rand()%N_MAXBET)+1;
 		}
-		while(bet[tmpplr]<0);
+		while(bet[tmpplr] > mymoney[tmpplr]);
 		/*0달러 이하로 돈이 계속 내려가도 계속 거는 걸 방지하기 위한 조건*/ 
-		printf("NPC %i 꼐서는%i 달러를 거셨습니다.\n ", tmpplr, bet[tmpplr]);
-		mymoney[tmpplr] = mymoney[tmpplr] - bet[tmpplr];
-		printf("NPC %i님께 남은 돈은 %i 달러입니다.\n ", tmpplr, mymoney[tmpplr]);
+		printf("\nNPC %i 님은 %i 달러를 거셨습니다.\n", tmpplr, bet[tmpplr]);
+		mymoney[tmpplr] = mymoney[tmpplr]-bet[tmpplr];
+		if (mymoney[tmpplr]>0)
+		{
+		printf("NPC %i 님께 남은 돈은 %i 달러입니다.\n", tmpplr, mymoney[tmpplr]);
+		}
+		else
+		{
+			printf("남은 돈을 모두 거셨습니다. 과연 승리할 수 있을까요?\n");
+		}
+		/*그냥 플레이의 재미를 위해 남은 돈이 없을 경우 다른 대사가 출력되도록 하였다.*/ 
 	}
 	/*NPC의 돈을 거는 부분*/ 
 	/*랜덤함수 이용, 1과 N_MAXBET 사이에 랜덤하게 돈을 건다.*/ 

@@ -75,7 +75,7 @@ void makecards(){
 		}
 	}
 	
-	printf ("카드가 준비되었습니다.\n");
+	printf ("\n카드가 준비되었습니다.\n");
 	 
 	}
 }

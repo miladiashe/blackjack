@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 		int tmpplr;
 		/*for 문을 돌리기 위한 임시변수*/ 
 		++round;
-		printf (" - ROUND %i - \n", round); 
+		printf ("\n - ROUND %i - \n", round); 
 		for (tmpplr=0; tmpplr<N_player; tmpplr++);
 		{
 			playerstatus[tmpplr]=0;
