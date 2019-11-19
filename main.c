@@ -1,15 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+
+/*고정 상수들*/ 
+
+#define N_maxplayer 4
+/*최대 플레이어수*/ 
+#define N_initmoney 50
+/*초기 자본*/
+#define N_CARD 52
+/*카드 한 세트 개수*/
+#define N_CARDSET 1
+/*카드 세트 개수*/ 
+
 #include "head.h"
 
-const int N_maxplayer = 4;
-/*최대 플레이어수*/ 
-const int N_initmoney = 50;
-/*초기 자본*/
-const int N_CARDSET = 52;
-/*카드 한 세트 개수*/
-
-
+/*전역 변수*/
+ 
+/*플레이어 정보*/ 
+int N_player;
+int mymoney[N_maxplayer+1];
+char *cardtray[N_CARD];
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 

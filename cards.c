@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 void makecards(){
-	extern N_CARDSET;
+	extern N_CARD;
 	char *trump[52];
 	/* *trump 에 모든 트럼프카드 무늬를 넣고 cardset를 trump와 대응, 섞는것도 포인터를 섞자 */
 	trump[0] = "spade A";
@@ -21,19 +21,22 @@ void makecards(){
 	
 	
 	
-	char *cardset[N_CARDSET];
-	/* 만약 N_CARDSET이 13보다 작을 경우 스페이드 1 2 3 4 5 6 7 8 9 10 j q k를 넣고 다이아, 하트, 클로버로 한 뒤 52보다 크면 반복.. 하는 식으로 짤까?*/ 
+
+	/* 만약 N_CARD가 13보다 작을 경우 스페이드 1 2 3 4 5 6 7 8 9 10 j q k를 넣고 다이아, 하트, 클로버로 한 뒤 52보다 크면 반복.. 하는 식으로 짤까?*/ 
 	
 	
-	if (N_CARDSET>0)
+	if (N_CARD>0)
 	{
+		extern *cardtray;
 		int tempcard;
-		for(tempcard=0; tempcard<N_CARDSET; tempcard++)
-		cardset[tempcard] = trump[tempcard];
+		for(tempcard=0; tempcard<N_CARD; tempcard++)
+			{
+			cardtray[tempcard] = trump[tempcard];
+			}
 	}
 	else
 	{
-		printf("플레이할 카드의 수가 너무 적습니다. N_CARDSET 변수에 잘못된 값이 저장되어 있습니다.");
+		printf("플레이할 카드의 수가 너무 적습니다. N_CARD 변수에 잘못된 값이 저장되어 있습니다.");
 	}
 	
 }
