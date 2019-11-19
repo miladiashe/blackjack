@@ -2,11 +2,14 @@
 #include <stdlib.h>
 
 void playerconfig(){
-	extern N_player;
+	extern int N_player;
+	do
+	{
 	/*플레이어의 수를 지정하는 변수*/ 
 	printf("몇 명의 상대와 함께하시겠습니까?(최대 4명)\n");
 	N_player = getIntegerInput();
-
+	}
+	while ( N_player>0 || N_player<5);
 	
 	extern mymoney[]; 
 	extern N_initmoney;

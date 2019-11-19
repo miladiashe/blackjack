@@ -8,6 +8,7 @@
 /*최대 플레이어수*/ 
 const int N_initmoney = 50;
 /*초기 자본*/
+#define N_maxhand 11
 
 #define N_CARD 52
 #define N_CARDSET 1
@@ -22,10 +23,15 @@ int N_player;
 /*플레이어의 수*/ 
 int mymoney[N_maxplayer];
 /*플레이어가 가진 돈*/ 
+int mycard[N_maxplayer+1][N_maxhand]; 
+/*플레이어가 가진 카드*/
+int mycardsum[N_maxplayer+1];
+/*플레이어가 가진 카드의 합*/ 
 
 /*게임 정보*/
 int bet[N_maxplayer]; 
 /*베팅한 액수를 담아 두는 변수*/ 
+int gameover = 0;
 
 char *trump[N_CARD];
 /*카드 한 벌의 갯수는 그냥 전역 상수로 지정하지 않겠습니다*/ 
@@ -47,20 +53,21 @@ int main(int argc, char *argv[]) {
 		/*카드 수를 N_CARDSET 만큼  찍어내는 함수*/
 	mixcards();
 		/*카드를 섞는다-포인터 배열로 카드 섞는 순서 정하기?*/
+	do{
 		
 		/*여기서 한번 반복문 시작*/
-		turn++; 
+		round++; 
 		betmoney(); 
 			/*배팅할 액수 결정*/
 		offercards();
-		
-		/*일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)-개인별로 받은 카드를 저장하는 함수를 정의해야 하나?
+		/*일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)
 		일단 이 상황에 21인지 체크히고 21인 사람 자동 승리
 		반복문 1-	더 받을지 아닐지 결정-플레이어부터 순서대로
 				반복문 2-	(블랙잭이 되거나 스톱하거나 21을 넘을때까지 반복문으로)반복2 끝 
 				딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝
 				끝나는 조건- 카드 다쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정*/ 
-		
+	}
+	while (gameover==0);
 		 
 		
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
