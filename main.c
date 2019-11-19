@@ -4,7 +4,7 @@
 
 /*고정 상수들*/ 
 
-#define N_maxplayer 4
+#define N_maxplayer 5
 /*최대 플레이어수*/ 
 const int N_initmoney = 50;
 /*초기 자본*/
@@ -19,7 +19,9 @@ const int N_initmoney = 50;
  
 /*플레이어 정보*/ 
 int N_player;
-int mymoney[N_maxplayer+1];
+/*플레이어의 수*/ 
+int mymoney[N_maxplayer];
+/*플레이어가 가진 돈*/ 
 
 char *trump[N_CARD];
 char *cardtray[N_CARDSET*52];

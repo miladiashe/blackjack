@@ -7,7 +7,7 @@ void playerconfig(){
 	printf("몇 명의 상대와 함께하시겠습니까?(최대 4명)\n");
 	N_player = getIntegerInput();
 	
-	extern mymoney[]; 
+	extern int mymoney[]; 
 	extern N_initmoney;
 	int intm;
 		for (intm=0; intm<N_player; intm++)
