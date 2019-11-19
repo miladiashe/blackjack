@@ -32,8 +32,9 @@ int main(int argc, char *argv[]) {
 		/*1. 블랙잭 게임의 흐름을 제대로 이해하자-난 아직까지 1대1밖에 생각을 못 한다*/
 		/*플레이어 수를 입력받는다-간단한 scanf 함수로 playernumber 변수에 직접적으로 영향주기*/
 	playerconfig();
-
 	makecards();
+	
+	
 
 		/*카드 수를 N_CARDSET 만큼 찍어내는 함수*/
 	mixcards();

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 void makecards(){
-	extern *trump;
+	extern char *trump[];
 	/* 그냥 카드 무늬는 그냥 코딩 하고 섞는 것도 포인터를 섞자 */
 	trump[0] = "spade A";
 	trump[1] = "spade 2";
@@ -55,12 +55,6 @@ void makecards(){
 	trump[49] = "club J";
 	trump[50] = "club Q";
 	trump[51] = "club K";
-	
-
-	
-
-	
-
 	
 }
 void mixcards(){
