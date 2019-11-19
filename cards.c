@@ -83,7 +83,7 @@ void mixcards()
 	srand((unsigned)time(NULL));
 	/*원래 여기 둬야 할걸 다른 함수에 두고 잊어버렸었다. 시간 기반해서 랜덤함수의 시드를 심자*/
 	int bfmix, afmix;
-	char tmpcard;
+	char *tmpcard;
 	extern char *cardtray[];
 	/*임시변수*/ 
 	for(bfmix=0; bfmix<N_CARDSET*N_CARD; bfmix++)

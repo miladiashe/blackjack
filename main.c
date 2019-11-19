@@ -38,12 +38,23 @@ int main(int argc, char *argv[]) {
 	int round=0;
 	/*지금이 n번째 라운드인지 저장하는 변수*/ 
 	int playerstatus[N_player];
+int i;
 	/*플레이어 또는 NPC의 상태를 나타낸다.  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭*/ 
 	playerconfig();
 		/*player 수를 설정한다. 돈도 미리 준다.*/ 
 	makecards();
+	/*디버깅을 위해 삽입한 부분. 카드가 잘 만들어졌는지 확인하려면 이 부분을 주석에서 뺴내보자. 
+			for (i=0; i<52; i++)
+			{
+				printf ("%s\n", cardtray[i]);
+			}
 		/*카드 수를 N_CARDSET 만큼  찍어내는 함수*/
 	mixcards();
+	/*디버깅을 위해 삽입한 부분. 카드가 섞이는지 확인하려면 이 부분을 주석에서 뺴내보자. 
+		for (i=0; i<52; i++)
+		{
+			printf ("%s\n", cardtray[i]);
+		}*/
 		/*카드를 섞는다-포인터 배열로 카드 섞는 순서 정하기?*/
 	do{
 		
