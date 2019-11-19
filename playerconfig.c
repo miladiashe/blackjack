@@ -14,11 +14,10 @@ void playerconfig(){
 	
 	extern mymoney[]; 
 	int intm;
-		for (intm=0; intm<N_player; intm++)
-		{
-			mymoney[intm] = N_initmoney;
-		}
-			/*money[0]은 플레이어, 1부터 컴퓨터 상대 1, 2, 3, 4*/ 
-	/*if 입력받은 숫자가 N_max_player 보다 적으면 에러메시지 내고 다시 입력받는 걸 반복하는 기능 추가하기.*/ 
-	
+	for (intm=0; intm<N_player; intm++)
+	{
+		mymoney[intm] = N_initmoney;
+	}
+	/*money[0]은 플레이어, 1부터 컴퓨터 상대 1, 2, 3, 4*/ 
+
 }

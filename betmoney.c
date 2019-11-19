@@ -10,6 +10,8 @@ void betmoney()
 	bet[0] = getIntegerInput();
 	mymoney[0] = mymoney[0] - bet[0];
 	/* 내 돈을 거는 부분*/
-	
+	srand((unsigned)time(NULL));
+
 	/*NPC의 돈을 거는 부분*/ 
+	/*랜덤함수 이용, N_MAXBET 사이에 랜덤하게 돈을 건다.*/ 
 }
