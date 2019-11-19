@@ -6,7 +6,7 @@
 
 #define N_maxplayer 4
 /*최대 플레이어수*/ 
-#define N_initmoney 50
+const int N_initmoney = 50;
 /*초기 자본*/
 #define N_CARD 52
 /*카드 한 세트 개수*/
@@ -20,7 +20,9 @@
 /*플레이어 정보*/ 
 int N_player;
 int mymoney[N_maxplayer+1];
-char *cardtray[N_CARD];
+
+char *trump[N_CARD];
+char *cardtray[N_CARDSET*52];
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
@@ -32,9 +34,11 @@ int main(int argc, char *argv[]) {
 	playerconfig();
 
 	makecards();
+
 		/*카드 수를 N_CARDSET 만큼 찍어내는 함수*/
 	mixcards();
 		/*카드를 섞는다-포인터 배열로 카드 섞는 순서 정하기?
+	
 		배팅할 액수 결정 
 		일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)-개인별로 받은 카드를 저장하는 함수를 정의해야 하나?
 		일단 이 상황에 21인지 체크히고 21인 사람 자동 승리
@@ -49,7 +53,6 @@ int main(int argc, char *argv[]) {
 		/*1. 다른 .c 파일에 담긴 함수 정의를 불러오는 법을 공부하기*/
 		/*성공!!!!!!!!!!!!! 프로젝트에 병합하니 된다....*/ 
 	/*3-세부적 구현방법- 만들다 필요해진 것*/ 
-	/*질문할것 2- 돈을 배열로 관리하면 편할 것 같다. 혹시 변수 갯수만큼 배열을 만들 수 있을까, 아 */
 	
 	return 0;
 }
