@@ -6,6 +6,7 @@
 void makecards(){
 	srand((unsigned)time(NULL));
 	extern char *trump[];
+	extern char *cardtray[];
 	if (N_CARD<52)
 	printf("잃어버린 카드를 찾아야 합니다\n");
 	else{
@@ -62,6 +63,20 @@ void makecards(){
 		trump[50] = "club Q";
 		trump[51] = "club K";
 	/*기준이 되는 카드 한 벌.*/
+	
+	int tempcard;
+	int tempcard2;
+	/*for 돌리기 위한 임시변수*/
+	for(tempcard=0; tempcard<N_CARDSET; tempcard++)
+	{
+		for(tempcard2=0; tempcard2<N_CARD; tempcard2++)
+		{
+			cardtray[tempcard2+tempcard*N_CARD]= trump [tempcard2];
+		}
+	}
+	
+	printf ("카드가 준비되었습니다.\n");
+	 
 	}
 }
 void mixcards(){
