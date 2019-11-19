@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "define.h"
+
 void makecards(){
 	extern char *trump[];
 	if (N_CARD<52)
