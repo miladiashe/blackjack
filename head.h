@@ -3,6 +3,6 @@ void makecards();
 void mixcards();
 int getIntegerInput();
 void betmoney();
-void carddraw();
+int carddraw();
 void offercards();
 int checksum21();

@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 		/*이번 라운드의 플레이어 상태 초기화*/ 
 		betmoney(); 
 			/*배팅할 액수 결정*/
-			//완료  
+			//완료 
 		offercards(); 
 		/*일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)*/
 			for (tmpplr=0; tmpplr<N_player; tmpplr++);

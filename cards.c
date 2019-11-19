@@ -92,7 +92,6 @@ void mixcards()
 		tmpcard = cardtray[bfmix];
 		cardtray[bfmix] = cardtray[afmix];
 		cardtray[afmix] = tmpcard; 
-	
 	}
 	
 	/*swap 방식으로 하되 랜덤한 순서로 섞고, 그걸 끝까지 다 하면 모든 카드가 평균적으로 두번 위치 이동하게 되니까 다 섞이는 듯 하다.*/ 

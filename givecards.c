@@ -1,4 +1,6 @@
-void carddraw()
+#include "define.h"
+
+int carddraw()
 /*카드를 한 장 뽑는 함수*/ 
 {
  } 
@@ -6,6 +8,20 @@ void carddraw()
 void offercards()
 /*처음에 두 장 주는 데 쓰는 함수*/ 
 {
+	extern int mycard[N_maxplayer+1][N_maxhand];
+	extern int N_player;
+	int i;
+	//1. give two card for each players
+	for (i=0;i<N_player;i++)
+	{
+		mycard[i][0] = carddraw();
+		mycard[i][1] = carddraw();
+	}
+	//2. give two card for the operator
+	mycard[N_player][0] = carddraw();
+	mycard[N_player][1] = carddraw();
+	
+	return;
 }
 
 int checksum21(int a)
