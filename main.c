@@ -16,6 +16,7 @@ int mycard[N_maxplayer+1][N_maxhand];
 int mycardsum[N_maxplayer+1];
 /*플레이어가 가진 카드의 합*/ 
 
+
 /*게임 정보*/
 int bet[N_maxplayer]; 
 /*베팅한 액수를 담아 두는 변수*/ 
@@ -46,26 +47,34 @@ int main(int argc, char *argv[]) {
 		/*카드를 섞는다-포인터 배열로 카드 섞는 순서 정하기?*/
 	do{
 		
-		/*여기서 한번 반복문 시작*/
+		/*여기서 한번 반복문 시작- 한 라운드를 나타낸다.*/
+		int tmpplr;
+		/*for 문을 돌리기 위한 임시변수*/ 
 		++round;
 		printf (" - ROUND %i - \n", round); 
+		for (tmpplr=0; tmpplr<N_player; tmpplr++);
+		{
+			playerstatus[tmpplr]=0;
+		}
+		/*이번 라운드의 플레이어 상태 초기화*/ 
 		betmoney(); 
 			/*배팅할 액수 결정*/
 		offercards(); 
 		/*일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)*/
-		checksum21();
-		/*일단 이 상황에 21인지 체크히고 21인 사람 자동 승리*/
-		int tmpplr;
-		/*for 문을 돌리기 위한 임시변수*/ 
+			for (tmpplr=0; tmpplr<N_player; tmpplr++);
+		{
+			playerstatus[tmpplr] = checksum21(tmpplr);
+		}
+		/*카드를 나눠준 후 모든 플레이어의 블랙잭 여부를 확인*/ 
+
 		for (tmpplr=1; tmpplr<N_player; tmpplr++);
 		{
-			/*반복문 1-	더 받을지 아닐지 결정-플레이어부터 순서대로*/
-			playerstatus[tmpplr]=0;
-			/*이번 턴의 플레이어 상태 초기화*/ 
-			do
+			/*각 플레이어의 턴을 나타내는 for 문이다.*/
+			while (playerstatus[tmpplr]!=0)
+			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
+			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
 			{
 			}
-			while (playerstatus[tmpplr]!=0);
 		}
 
 			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝

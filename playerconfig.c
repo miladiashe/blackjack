@@ -11,6 +11,7 @@ void playerconfig(){
 	N_player = getIntegerInput();
 	}
 	while ( N_player<1 || N_player>N_maxplayer-1);
+	N_player++;
 	
 	extern mymoney[]; 
 	int intm;

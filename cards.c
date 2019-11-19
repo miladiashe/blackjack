@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "define.h"
 
 void makecards(){
+	srand((unsigned)time(NULL));
 	extern char *trump[];
 	if (N_CARD<52)
 	printf("잃어버린 카드를 찾아야 합니다\n");

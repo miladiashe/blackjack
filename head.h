@@ -5,4 +5,4 @@ int getIntegerInput();
 void betmoney();
 void carddraw();
 void offercards();
-void checksum21();
+int checksum21();
