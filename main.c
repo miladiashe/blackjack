@@ -1,29 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headtest.h"
+#include "head.h"
 
-#define N_maxplayer 4
+const int N_maxplayer = 4;
 /*최대 플레이어수*/ 
-#define N_intmoney 50 
-/*초기자본*/ 
+const int N_initmoney = 50;
+/*초기 자본*/
+const int N_CARDSET = 42;
+/*카드 한 세트 개수*/
+
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
 
 
 int main(int argc, char *argv[]) { 
 	/*1-게임의 전체적인 흐름에 따라  코드의 뼈대를 짤 것*/
 		/*1. 블랙잭 게임의 흐름을 제대로 이해하자-난 아직까지 1대1밖에 생각을 못 한다*/
 		/*플레이어 수를 입력받는다-간단한 scanf 함수로 playernumber 변수에 직접적으로 영향주기*/
-	int N_player;
-	/*플레이어의 수를 지정하는 변수*/ 
-	printf("몇 명의 상대와 함께하시겠습니까?(최대 4명)\n");
-	scanf("%d", &N_player);
-	
-	int money[N_player+1]; 
-		/*이부분을 새로 함수처리해서  돈을 관리하는 다른 함수들과 같은.c 파일로 이동할 것*/ 
-		int intm;
-		for (intm=0; intm<(N_player+1); intm++)
-			money[intm] = N_intmoney;
+	playerconfig();
 			
 	/*돈을 관리하는 변수들. 플레이어 수가 유동적이기 떄문에 배열로 만들어 봤다. money[0]은 플레이어, 1부터 컴퓨터 상대 1, 2, 3, 4...*/ 
 	/*if 입력받은 숫자가 N_max_player 보다 적으면 에러메시지 내고 다시 입력받는 걸 반복하는 기능 추가하기.*/ 
