@@ -74,28 +74,32 @@ void makecards(){
 		}
 	}
 	
-	printf ("%s, %s", trump[3], cardtray[3]);
 	printf ("\n카드 %i벌이 준비되었습니다.\n", N_CARDSET);
 	 
 	}
 }
 void mixcards()
 {
-	extern char *cardtray[];
 	srand((unsigned)time(NULL));
 	/*원래 여기 둬야 할걸 다른 함수에 두고 잊어버렸었다. 시간 기반해서 랜덤함수의 시드를 심자*/
 	int bfmix, afmix;
 	char tmpcard;
+	extern char *cardtray[];
 	/*임시변수*/ 
-	for(bfmix=0; bfmix<N_CARD; bfmix++)
+	for(bfmix=0; bfmix<N_CARDSET*N_CARD; bfmix++)
 	{
-		afmix = rand()%N_CARD;
+		afmix = rand()%N_CARDSET*N_CARD;
 		tmpcard = cardtray[bfmix];
 		cardtray[bfmix] = cardtray[afmix];
 		cardtray[afmix] = tmpcard; 
+	
 	}
-	printf ("%s", cardtray[3]);
+	
 	/*swap 방식으로 하되 랜덤한 순서로 섞고, 그걸 끝까지 다 하면 모든 카드가 평균적으로 두번 위치 이동하게 되니까 다 섞이는 듯 하다.*/ 
 	printf ("\n카드를 섞었습니다.\n");	
 /*배열의 순서를 서순으로 바꾸는 법..*/ 
+
 }
+
+/* 항상 이런 생각으로 개발에 임하라. “내 소스를 유지보수하게 되는 개발자가 내가 어디 살고 있는지 알고 있는 과격한 사이코패스일 것이다.” (Martin Golding)
+ "난 죽음을 택하겠다."(가로쉬 헬스크림)*/ 
