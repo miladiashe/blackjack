@@ -11,6 +11,7 @@
 /*NPC가 최대로 거는 액수*/ 
 
 #define N_CARD 52
+/*카드 한 벌의 장수*/ 
 #define N_CARDSET 1
 /*카드 세트 개수*/ 
 

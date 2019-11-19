@@ -9,7 +9,8 @@ void offercards()
 }
 
 int checksum21(int a)
-/*합이 21인지 체크해야 하는 부분에 일일이 체크하는 대신 checksum 함수를 쓸 것이다.*/
+/*합이 21인지 체크해야 하는 부분에 일일이 체크하는 대신 checksum 함수를 쓸 것이다.
+전역변수를 너무 늘리는 것 같아서 playerstatus를 전역변수로 쓰는 대신 이 함수를 이용해 값을 반환해 넣어주기로 했다.*/
 {
 	extern mycardsum[];
 	if (mycardsum[a]>21)

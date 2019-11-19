@@ -4,7 +4,6 @@
 #include "define.h"
 
 void makecards(){
-	srand((unsigned)time(NULL));
 	extern char *trump[];
 	extern char *cardtray[];
 	if (N_CARD<52)
@@ -75,9 +74,28 @@ void makecards(){
 		}
 	}
 	
-	printf ("\n카드가 준비되었습니다.\n");
+	printf ("%s, %s", trump[3], cardtray[3]);
+	printf ("\n카드 %i벌이 준비되었습니다.\n", N_CARDSET);
 	 
 	}
 }
-void mixcards(){
+void mixcards()
+{
+	extern char *cardtray[];
+	srand((unsigned)time(NULL));
+	/*원래 여기 둬야 할걸 다른 함수에 두고 잊어버렸었다. 시간 기반해서 랜덤함수의 시드를 심자*/
+	int bfmix, afmix;
+	char tmpcard;
+	/*임시변수*/ 
+	for(bfmix=0; bfmix<N_CARD; bfmix++)
+	{
+		afmix = rand()%N_CARD;
+		tmpcard = cardtray[bfmix];
+		cardtray[bfmix] = cardtray[afmix];
+		cardtray[afmix] = tmpcard; 
+	}
+	printf ("%s", cardtray[3]);
+	/*swap 방식으로 하되 랜덤한 순서로 섞고, 그걸 끝까지 다 하면 모든 카드가 평균적으로 두번 위치 이동하게 되니까 다 섞이는 듯 하다.*/ 
+	printf ("\n카드를 섞었습니다.\n");	
+/*배열의 순서를 서순으로 바꾸는 법..*/ 
 }
