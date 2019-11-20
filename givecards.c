@@ -50,6 +50,21 @@ int sumcards(int playernum)
 int thiscardnumber(int playernum, int handnum)
 /*카드의 값(게임할 때 실제로 쓰이는)를 추출하는 기능 playernum번 플레이어의 handnum번째 카드를 입력받는다. */ 
 {
+	extern int mycard[N_maxplayer+1][N_maxhand];
+	extern int acestatus[];
+	if (mycard[playernum][handnum]%1000>9)
+	{
+		return 10;
+	}
+	else if (mycard[playernum][handnum]%1000>1)
+	{
+		return mycard[playernum][handnum]%1000;
+	}
+	else
+	{
+		acestatus[playernum]=1;
+		return 11;
+	}
 }
 
 int checksum21(int a)

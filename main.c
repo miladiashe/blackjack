@@ -26,7 +26,7 @@ int trump[N_CARD];
 /*카드 한 벌*/ 
 int cardtray[N_CARDSET*N_CARD];
 /*N_CARDSET벌의  카드를 쓰는 카드 한뭉치*/  
-int acestatus[N_maxplayer];
+int acestatus[N_maxplayer+1];
 /*몇 번째 플레이어가 에이스를 받았는지 여부 저장하는 곳. 일단 전역변수로 만들어보자.*/ 
 int currentcard;
 /*현재 카드를 몇 장 사용했는지 담아두는 변수*/ 
