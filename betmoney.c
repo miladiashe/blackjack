@@ -55,5 +55,14 @@ void betmoney()
 
 int findwinner()
 {
+	int maxmoney;
+	extern int mymoney[N_maxplayer];
+	
+	
 	/*남은 mymoney 액수로 우승자를 찾아 우승자의 플레이어 번호를 반환하는 함수.*/ 
 } 
+
+int roundwinner()
+{
+	/*각 라운드마다 이 함수로 우승자를 찾자*/ 
+}

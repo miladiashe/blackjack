@@ -18,12 +18,13 @@ int gostop()
 		{
 			printf("\n축하드립니다.\n"); 
 		}
-		else if (playerstatus[0] > 21)
+		else if (playerstatus[0]>21)
 		{
 			printf("\n 안타깝군요.\n"); 
 		}
-		
-		
+		else
+		{
+		}
 	}
 	else
 	{

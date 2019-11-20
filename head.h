@@ -7,6 +7,7 @@ int getIntegerInput();
 
 void betmoney();
 int findwinner();
+int roundwinner();
 
 int carddraw();
 void offercards();

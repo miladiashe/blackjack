@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 	/*지금이 n번째 라운드인지 저장하는 변수*/ 
 	playerconfig();
 		/*player 수를 설정한다. 돈도 미리 준다.*/ 
-	int winner = N_maxplayer;
+	int winner = N_player;
 	/*우승자를 기록하는 변수 미리 선언한다. 동작 여부와 버그를 확인하기 위해 초기값은 딜러로 해 둔다*/ 
 	makecards();
 	/*디버깅을 위해 삽입한 부분. 카드가 잘 만들어졌는지 확인하려면 이 부분을 주석에서 뺴내보자.
@@ -72,22 +72,24 @@ int main(int argc, char *argv[]) {
 
 		++round;
 		printf ("\n - ROUND %i - \n", round); 
-		for (tmpplr=0; tmpplr<N_maxplayer; tmpplr++);
+		int wtf2;
+		for (wtf2=0; wtf2<N_maxplayer; wtf2++);
 		{
-			playerstatus[tmpplr]=0;
+			playerstatus[wtf2]=0;
 		}
 		/*이번 라운드의 플레이어 상태 초기화*/ 
-		for (tmpplr=0; tmpplr<N_maxplayer+1; tmpplr++);
+		for (tmpplr=0; tmpplr<(N_maxplayer+1); tmpplr++);
 		{	
 			howmuchcard[tmpplr] = 0;
 			mycardsum[tmpplr] = 0;
 			acestatus[tmpplr] = 0;
-			for (tmpplr=0; tmpplr2<N_maxhand; tmpplr2++);
+			for (tmpplr2=0; tmpplr2<N_maxhand; tmpplr2++);
 			{
-				mycard[tmpplr][N_maxhand]=0;
+				mycard[tmpplr][tmpplr2]=0;
 			}
 		}
-		/*이번 라운드의 받은 카드 수, 받은 카드 합, 에이스 여부, 플레이어 핸드 초기화*/ 
+		/*이번 라운드의 받은 카드 수, 받은 카드 합, 에이스 여부, 플레이어 핸드 초기화*/
+		/*대체 뭐가 문제이길래 작동을 안 하는 건지 모르겠다..*/ 
 		betmoney(); 
 			/*배팅할 액수 결정*/
 			//완료 
@@ -149,16 +151,16 @@ int main(int argc, char *argv[]) {
 			gameover = 1;
 		/*카드가 2장씩 나눠줄 수 없을 만큼 줄어들면 게임을 끝낸다.*/
 		}
-		for (tmpplr=0; tmpplr<N_maxplayer; tmpplr++)
+		int wtf;
+		for (wtf=0; wtf<N_player; wtf++)
 		{
-			if (mymoney[tmpplr]<=0)
+			if (mymoney[wtf]<=0)
 			{
 				gameover=2;
 			}
-			/*mymoney[N_player]가 전부 0인지 검사해보는 함수*/
-		/*플레이어 한명 파산시 게임을 끝낸다.*/ 
+				/*mymoney[N_player]가 전부 0인지 검사해보는 함수*/
+			/*플레이어 한명 파산시 게임을 끝낸다.*/ 
 		}
-		 
 	}
 	while (gameover==0);
 	
