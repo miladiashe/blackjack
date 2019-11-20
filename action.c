@@ -22,12 +22,24 @@ int gostop()
 /*플레이어 턴 전용, 카드를 받을지 말지 행동을 정하는 함수*/ 
 int npcgo(int playernum)
 {
+	extern int mycardsum[];
 	extern int N_player;
+	extern int playerstatus[];
 	int dealer = 0;
 	/*딜러 여부, 다른 대사 출력하는 용도*/ 
 	if (playernum =  N_player)
 	{
 		dealer = 1;
+	}
+	if (mycardsum[playernum]<17)
+	{
+		/*자동 go*/ 
+		givemorecard(playernum);
+	}
+	else
+	{
+		/*stop*/ 
+		playerstatus[playernum] = 2;
 	}
 }
 /*npc의 행동을 결정하는 함수*/ 
