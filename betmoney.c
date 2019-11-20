@@ -56,7 +56,7 @@ void betmoney()
 int findwinner()
 {
 	int maxmoney = 0;
-	int i
+	int i;
 	extern int mymoney[N_maxplayer];
 	
 	for(i = 0; i<N_maxplayer; i++)
@@ -65,8 +65,6 @@ int findwinner()
             maxmoney = mymoney[i]; //max 에는 num[i]의 값이 들어감
     }
 
-
-출처: https://kmj1107.tistory.com/entry/C언어-숫자-5개중-가장-큰-수-구하기-for-문-사용 [토순이네집]
 	
 	/*남은 mymoney 액수로 우승자를 찾아 우승자의 플레이어 번호를 반환하는 함수.*/ 
 } 
