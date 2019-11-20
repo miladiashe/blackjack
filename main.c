@@ -73,17 +73,17 @@ int main(int argc, char *argv[]) {
 		++round;
 		printf ("\n - ROUND %i - \n", round); 
 		int wtf2;
-		for (wtf2=0; wtf2<N_maxplayer; wtf2++);
+		for (wtf2=0; wtf2<N_maxplayer; wtf2++)
 		{
 			playerstatus[wtf2]=0;
 		}
 		/*이번 라운드의 플레이어 상태 초기화*/ 
-		for (tmpplr=0; tmpplr<(N_maxplayer+1); tmpplr++);
+		for (tmpplr=0; tmpplr<(N_maxplayer+1); tmpplr++)
 		{	
 			howmuchcard[tmpplr] = 0;
 			mycardsum[tmpplr] = 0;
 			acestatus[tmpplr] = 0;
-			for (tmpplr2=0; tmpplr2<N_maxhand; tmpplr2++);
+			for (tmpplr2=0; tmpplr2<N_maxhand; tmpplr2++)
 			{
 				mycard[tmpplr][tmpplr2]=0;
 			}
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 		/*offercards에서 준 최초 두장을 보여주는 함수.*/ 
 		//완료 
 
-		for (tmpplr=0; tmpplr2<N_player+1; tmpplr2++);
+		for (tmpplr=0; tmpplr<N_player+1; tmpplr++)
 		{
 			if (tmpplr == 0)
 			{
@@ -137,6 +137,7 @@ int main(int argc, char *argv[]) {
 					npcgo(tmpplr);
 				}
 			}
+			roundwinner();
 			/*각 플레이어의 턴을 나타내는 for 문이다.if 문을 이용해 사용자의 턴과 NPC의 턴을 구분하고 전체적으로는 같은 루프에 넣는다.*/
 			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
 			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 

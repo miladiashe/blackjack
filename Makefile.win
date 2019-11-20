@@ -1,9 +1,6 @@
 # Project: Blackjack
 # Makefile created by Dev-C++ 5.11
 
-# This Makefile is written for syntax check!
-# Regenerate it if you want to use this Makefile to build.
-
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
@@ -13,11 +10,11 @@ LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Blackjack.exe
-CXXFLAGS = $(CXXINCS) -fsyntax-only -g3
-CFLAGS   = $(INCS) -fsyntax-only -g3
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
 RM       = rm.exe -f
 
-.PHONY: all all-before all-after clean clean-custom $(OBJ) $(BIN)
+.PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BIN) all-after
 
@@ -25,27 +22,28 @@ clean: clean-custom
 	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
 main.o: main.c
-	$(CC) -c main.c $(CFLAGS)
+	$(CC) -c main.c -o main.o $(CFLAGS)
 
 playerconfig.o: playerconfig.c
-	$(CC) -c playerconfig.c $(CFLAGS)
+	$(CC) -c playerconfig.c -o playerconfig.o $(CFLAGS)
 
 cards.o: cards.c
-	$(CC) -c cards.c $(CFLAGS)
+	$(CC) -c cards.c -o cards.o $(CFLAGS)
 
 input.o: input.c
-	$(CC) -c input.c $(CFLAGS)
+	$(CC) -c input.c -o input.o $(CFLAGS)
 
 betmoney.o: betmoney.c
-	$(CC) -c betmoney.c $(CFLAGS)
+	$(CC) -c betmoney.c -o betmoney.o $(CFLAGS)
 
 givecards.o: givecards.c
-	$(CC) -c givecards.c $(CFLAGS)
+	$(CC) -c givecards.c -o givecards.o $(CFLAGS)
 
 action.o: action.c
-	$(CC) -c action.c $(CFLAGS)
+	$(CC) -c action.c -o action.o $(CFLAGS)
 
 printcard.o: printcard.c
-	$(CC) -c printcard.c $(CFLAGS)
+	$(CC) -c printcard.c -o printcard.o $(CFLAGS)

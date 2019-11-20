@@ -55,7 +55,7 @@ void betmoney()
 
 int findwinner()
 {
-	int maxmoney;
+	int maxmoney = 0;
 	extern int mymoney[N_maxplayer];
 	
 	
