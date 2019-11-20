@@ -64,5 +64,40 @@ int findwinner()
 
 int roundwinner()
 {
+	extern int playerstatus[N_maxplayer+1];
+	extern int N_player;
+	extern int iamwinner[N_maxplayer+1];
+	if (playerstatus[N_player] == 21)
+	{
+		iamwinner[N_player] = 1
+		/*딜러승리*/
+		/*iamwinner[N_maxplayer+1]에 딜러 칸 말고 전부 0*/
+	}
 	/*각 라운드마다 이 함수로 우승자를 찾자*/ 
+	takemymoney();
+	
+}
+int takemymoney()
+{
+	extern int mymoney[N_maxplayer];
+	extern int bet[N_maxplayer]; 
+	extern int N_player;
+	extern int iamwinner[N_maxplayer+1];
+	int h;
+	
+	for (h=0; h<N_player; h++)
+	{
+		if (iamwinner[h]=0)
+		{
+			bet[h] = 0;
+			/*베팅 액수는 초기화를 여기서 한다*/ 
+		}
+		else
+		{
+			mymoney[h] = (2*bet[h]);
+			/*베팅한 금액의 두 배를 돌려준다.*/ 
+			bet[h] = 0;
+		}
+	}
+	/*베팅한 돈을 돌려주는 함수*/ 
 }

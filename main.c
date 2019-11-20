@@ -35,6 +35,8 @@ int howmuchcard[N_maxplayer+1];
 /*각 턴에 플레이어별로 카드를 몇 장이나 받았는지 담아두는 변수*/ 
 int playerstatus[N_maxplayer+1];
 /*플레이어 또는 NPC의 상태를 나타낸다.  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭*/ 
+int iamwinner[N_maxplayer+1];
+/*각 라운드마다 승리 여부를 저장 1 이김 0  짐*/ 
 
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -49,7 +51,8 @@ int main(int argc, char *argv[]) {
 	/*지금이 n번째 라운드인지 저장하는 변수*/ 
 	playerconfig();
 		/*player 수를 설정한다. 돈도 미리 준다.*/ 
-	int winner = N_player;
+	int winner;
+	winner = N_player;
 	/*우승자를 기록하는 변수 미리 선언한다. 동작 여부와 버그를 확인하기 위해 초기값은 딜러로 해 둔다*/ 
 	makecards();
 	/*디버깅을 위해 삽입한 부분. 카드가 잘 만들어졌는지 확인하려면 이 부분을 주석에서 뺴내보자.
