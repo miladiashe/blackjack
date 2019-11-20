@@ -24,13 +24,21 @@ void offercards()
 	return;
 }
 
-int sumcards()
-/*지금까지 받은 카드의 합을 계산하는 함수.*/ 
+int sumcards(int playernum)
+/*A번째 플레이어가 지금까지 받은 카드의 합을 계산하는 함수.*/ 
 {
+	extern mycardsum[];
+	int handA;
+	int cardsum = 0;
+	for(handA=0; handA<N_maxhand; handA++)
+	{
+		cardsum = cardsum + thiscardnumber(playernum, handA);
+	}
+	mycardsum[playernum] = cardsum;
 	/*그냥 손에 있는 모든 카드의 합을 구하면 될 것.*/ 
 }
 
-int thiscardnumber()
+int thiscardnumber(int playernum, int handnum)
 /*카드의 값(게임할 때 실제로 쓰이는)를 추출하는 기능*/ 
 {
 }
