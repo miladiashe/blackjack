@@ -79,12 +79,13 @@ int main(int argc, char *argv[]) {
 		{	
 			howmuchcard[tmpplr] = 0;
 			mycardsum[tmpplr] = 0;
+			acestatus[tmpplr] = 0;
 			for (tmpplr=0; tmpplr2<N_maxhand; tmpplr2++);
 			{
 				mycard[tmpplr][N_maxhand]=0;
 			}
 		}
-		/*이번 라운드의 플레이어 핸드 초기화*/ 
+		/*이번 라운드의 받은 카드 수, 받은 카드 합, 에이스 여부, 플레이어 핸드 초기화*/ 
 		betmoney(); 
 			/*배팅할 액수 결정*/
 			//완료 
@@ -111,7 +112,7 @@ int main(int argc, char *argv[]) {
 				printcard(N_player, 0);
 				printf (" 입니다.");
 				printf(" 합 [%i]", mycardsum[N_player]);
-				/*딜러가 카드를 공개한다.*/ 
+				/*딜러가 카드를 공개한다.*/  
 			}
 			else
 			{
@@ -130,6 +131,7 @@ int main(int argc, char *argv[]) {
 				} 
 				else
 				{
+					npcgo(tmpplr);
 					/*npc의 턴 구현*/ 
 				}
 			}

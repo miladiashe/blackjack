@@ -43,11 +43,22 @@ int sumcards(int playernum)
 /*A번째 플레이어가 지금까지 받은 카드의 합을 계산하는 함수.*/ 
 {
 	extern mycardsum[];
+	extern int acestatus[];
 	int handA;
+	int tempace;
 	int cardsum = 0;
 	for(handA=0; handA<N_maxhand; handA++)
 	{
 		cardsum = cardsum + thiscardnumber(playernum, handA);
+	}
+	if (cardsum > 21)
+	{
+		acestatus[playernum] = tempace;
+		if (tempace>0)
+		{
+			cardsum - 10;
+			tempace - 1;
+		}
 	}
 	mycardsum[playernum] = cardsum;
 	/*그냥 손에 있는 모든 카드의 합을 구하면 될 것.*/ 
@@ -73,7 +84,7 @@ int thiscardnumber(int playernum, int handnum)
 	/*합을 구할떄 전체를 더해버리니까 이게 없으면 그냥 아직 없는카드도 에이스로 판정하는듯*/ 
 	else
 	{
-		acestatus[playernum]=1;
+		acestatus[playernum]=acestatus[playernum]+1;
 		return 11;
 	}
 }
@@ -94,154 +105,8 @@ playerstatus를 다른 함수에도 건드려야 하기 떄문에 그냥 전역변수로 바꾸었지만 이�
 	else
 	{
 		return 21;
-	 }
+	}
 	/*if  mycardsum[n]이 21일 경우 그 플레이어는 블랙잭이다. 블랙잭 여부를 구현하려면?
 	mycardsum[a] 를 이용, 이 함수의 힙에 따라  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭 의 값을 돌려준다.*/
  }
  
-char printcard(int playernum, int handnum)
-/*무슨 카드인지 읽어주는(무늬, 숫자) 함수
-천의 자리로 문자를 판단하고 1, 10의 자리로 무슨 카드인지 읽는다. printf로 출력하는 기능이다.*/ 
-{
-	extern int mycard[N_maxplayer+1][N_maxhand];
-	if (mycard[playernum][handnum]<1000) //스페이드  
-	{
-		printf (" ♠");
-	
-		if (mycard[playernum][handnum]%1000>10)
-		{
-			if (mycard[playernum][handnum]%1000 == 11)
-			{
-				printf ("J");
-			}
-			else if (mycard[playernum][handnum]%1000 == 12)
-			{
-				printf ("Q");
-			}
-			else
-			{
-				printf ("k");
-			}
-		}
-		else if (mycard[playernum][handnum]%1000>1)
-		{
-			printf("%i", mycard[playernum][handnum]%1000);
-		}
-		else
-		{
-			printf("A");
-		}
-	}
-	else if (mycard[playernum][handnum]<2000) //다이아 
-	{
-		printf (" ◇");
-	
-		if (mycard[playernum][handnum]%1000>10)
-		{
-			if (mycard[playernum][handnum]%1000 == 11)
-			{
-				printf ("J");
-			}
-			else if (mycard[playernum][handnum]%1000 == 12)
-			{
-				printf ("Q");
-			}
-			else
-			{
-				printf ("k");
-			}
-		}
-		else if (mycard[playernum][handnum]%1000>1)
-		{
-			printf("%i", mycard[playernum][handnum]%1000);
-		}
-		else
-		{
-			printf("A");
-		}
-	}
-		else if (mycard[playernum][handnum]<3000)  //하 트  
-	{
-		printf (" ♡");
-	
-		if (mycard[playernum][handnum]%1000>10)
-		{
-			if (mycard[playernum][handnum]%1000 == 11)
-			{
-				printf ("J");
-			}
-			else if (mycard[playernum][handnum]%1000 == 12)
-			{
-				printf ("Q");
-			}
-			else
-			{
-				printf ("k");
-			}
-		}
-		else if (mycard[playernum][handnum]%1000>1)
-		{
-			printf("%i", mycard[playernum][handnum]%1000);
-		}
-		else
-		{
-			printf("A");
-		}
-	}
-		else  //클럽 
-	{
-		printf (" ♣");
-	
-		if (mycard[playernum][handnum]%1000>10)
-		{
-			if (mycard[playernum][handnum]%1000 == 11)
-			{
-				printf ("J");
-			}
-			else if (mycard[playernum][handnum]%1000 == 12)
-			{
-				printf ("Q");
-			}
-			else
-			{
-				printf ("k");
-			}
-		}
-		else if (mycard[playernum][handnum]%1000>1)
-		{
-			printf("%i", mycard[playernum][handnum]%1000);
-		}
-		else
-		{
-			printf("A");
-		}
-	}
-}
-
-void printinitialcard()
-/*처음 나눠준 카드를 읽어 주는 함수*/ 
-{
-	extern int N_player;
-	extern int mycardsum[N_maxplayer+1];
-	printf ("\n카드를 나누어 드리겠습니다.");
-	printf ("\n딜러의 카드 : 뒤집은 카드 한 장과");
-	printcard(N_player, 1);
-	/*딜러의 카드 출력*/ 
-	printf ("\n");
-	printf ("\n나의 카드 : ");	
-	printcard(0, 0);
-	printcard(0, 1);
-	printf(" [%i]", mycardsum[0]);
-	/*나의 카드 출력 [] 안에 들어있는건 합*/ 
-	int tmpplr;
-	for(tmpplr=1; tmpplr<N_player; tmpplr++)
-	{
-	 	printf ("\n");
-		printf ("\nNPC %i의 카드 : ", tmpplr);	
-		printcard(tmpplr, 0);
-		printcard(tmpplr, 1);
-		printf(" [%i]", mycardsum[tmpplr]);
-	}
-	/*NPC의 카드 출력*/ 
-	
-}

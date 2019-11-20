@@ -1,14 +1,23 @@
 void playerconfig();
+
 void makecards();
 void mixcards();
+
 int getIntegerInput();
+
 void betmoney();
+
 int carddraw();
 void offercards();
-int checksum21();
 int sumcards();
-char thiscardnumber();
+int thiscardnumber();
+int checksum21();
+
+
 void printcard();
 void printinitialcard();
+void printingamecard();
+
 int gostop();
 int npcgo();
+
