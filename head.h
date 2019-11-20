@@ -10,3 +10,5 @@ int sumcards();
 char thiscardnumber();
 void printcard();
 void printinitialcard();
+int gostop();
+int npcgo();

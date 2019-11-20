@@ -19,12 +19,15 @@ void offercards()
 {
 	extern int mycard[N_maxplayer+1][N_maxhand];
 	extern int N_player;
+	extern int howmuchcard[];
 	int i;
 	//1. 각 플레이어에게 두 장씩 나누어준다. 
 	for (i=0;i<N_player;i++)
 	{
 		mycard[i][0] = carddraw();
+		howmuchcard[i]++;
 		mycard[i][1] = carddraw();
+		howmuchcard[i]++;
 		sumcards(i);
 	}
 	//2. 딜러에게 두 장을 나누어준다. 
@@ -77,7 +80,7 @@ int thiscardnumber(int playernum, int handnum)
 
 int checksum21(int a)
 /*합이 21인지 체크해야 하는 부분에 일일이 체크하는 대신 checksum 함수를 쓸 것이다.
-전역변수를 너무 늘리는 것 같아서 playerstatus를 전역변수로 쓰는 대신 이 함수를 이용해 값을 반환해 넣어주기로 했다.*/
+playerstatus를 다른 함수에도 건드려야 하기 떄문에 그냥 전역변수로 바꾸었지만 이건 그대로 쓰자.*/
 {
 	extern mycardsum[];
 	if (mycardsum[a]>21)
@@ -220,7 +223,7 @@ void printinitialcard()
 {
 	extern int N_player;
 	extern int mycardsum[N_maxplayer+1];
-	printf ("카드를 나누어 드리겠습니다.");
+	printf ("\n카드를 나누어 드리겠습니다.");
 	printf ("\n딜러의 카드 : 뒤집은 카드 한 장과");
 	printcard(N_player, 1);
 	/*딜러의 카드 출력*/ 
@@ -228,7 +231,7 @@ void printinitialcard()
 	printf ("\n나의 카드 : ");	
 	printcard(0, 0);
 	printcard(0, 1);
-	printf("[%i]", mycardsum[0]);
+	printf(" [%i]", mycardsum[0]);
 	/*나의 카드 출력 [] 안에 들어있는건 합*/ 
 	int tmpplr;
 	for(tmpplr=1; tmpplr<N_player; tmpplr++)
@@ -237,6 +240,7 @@ void printinitialcard()
 		printf ("\nNPC %i의 카드 : ", tmpplr);	
 		printcard(tmpplr, 0);
 		printcard(tmpplr, 1);
+		printf(" [%i]", mycardsum[tmpplr]);
 	}
 	/*NPC의 카드 출력*/ 
 	

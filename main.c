@@ -18,10 +18,11 @@ int mycardsum[N_maxplayer+1];
 
 
 /*게임 정보*/
+
 int bet[N_maxplayer]; 
 /*베팅한 액수를 담아 두는 변수*/ 
 int gameover = 0;
-/*게임이 완전히 끝났음을 알리는 변수*/  
+/*게임이 완전히 끝났음을 알리는 변수. 0인 경우 진행중. 카드가 다 떨어졌을 경우 1, 한 명이 파산했을 경우 2*/  
 int trump[N_CARD];
 /*카드 한 벌*/ 
 int cardtray[N_CARDSET*N_CARD];
@@ -30,6 +31,11 @@ int acestatus[N_maxplayer+1];
 /*몇 번째 플레이어가 에이스를 받았는지 여부 저장하는 곳. 일단 전역변수로 만들어보자.*/ 
 int currentcard;
 /*현재 카드를 몇 장 사용했는지 담아두는 변수*/ 
+int howmuchcard[N_maxplayer+1];
+/*각 턴에 플레이어별로 카드를 몇 장이나 받았는지 담아두는 변수*/ 
+int playerstatus[N_maxplayer+1];
+/*플레이어 또는 NPC의 상태를 나타낸다.  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭*/ 
+
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -41,8 +47,6 @@ int main(int argc, char *argv[]) {
 	/*for 문을 돌리기 위한 임시변수*/ 
 	int round=0;
 	/*지금이 n번째 라운드인지 저장하는 변수*/ 
-	int playerstatus[N_player];
-	/*플레이어 또는 NPC의 상태를 나타낸다.  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭*/ 
 	playerconfig();
 		/*player 수를 설정한다. 돈도 미리 준다.*/ 
 	makecards();
@@ -73,6 +77,7 @@ int main(int argc, char *argv[]) {
 		/*이번 라운드의 플레이어 상태 초기화*/ 
 		for (tmpplr=0; tmpplr<N_maxplayer+1; tmpplr++);
 		{	
+			howmuchcard[tmpplr] = 0;
 			mycardsum[tmpplr] = 0;
 			for (tmpplr=0; tmpplr2<N_maxhand; tmpplr2++);
 			{
@@ -93,18 +98,27 @@ int main(int argc, char *argv[]) {
 		printinitialcard();
 		/*offercards에서 준 최초 두장을 보여주는 함수.*/ 
 
-		for (tmpplr2=0; tmpplr<N_player; tmpplr++);
+		for (tmpplr2=0; tmpplr<N_player+1; tmpplr++);
 		{
 			if (tmpplr2 == 0)
 			{
 				printf ("\n\n당신의 차례입니다.\n");
 			} 
+			else if (tmpplr == N_player)
+			{
+				printf ("\n\n마지막으로, 제 차례입니다.\n");
+				printf ("제가 받은 첫 번쨰 카드는 ");
+				printcard(N_player, 0);
+				printf (" 입니다.");
+				printf(" 합 [%i]", mycardsum[N_player]);
+				/*딜러가 카드를 공개한다.*/ 
+			}
 			else
 			{
 				printf ("\n\nNPC %i 님의 차례입니다.\n", tmpplr2);
 			}
 			/*각 플레이어의 턴을 나타내는 for 문이다.if 문을 이용해 사용자의 턴과 NPC의 턴을 구분하고 전체적으로는 같은 루프에 넣는다.*/
-			while (playerstatus[tmpplr]!=0)
+			while (playerstatus[tmpplr]==0)
 			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
 			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
 			{
@@ -112,10 +126,7 @@ int main(int argc, char *argv[]) {
 				if (tmpplr2 == 0)
 				{
 					/*플레이어의 턴 구현*/
-					 
-					int gostop;
-					printf("한 장 더 받고 싶으시면 1을, 그만두고 싶으시면 0을 입력해 주세요. \n");
-					gostop = getIntegerInput();
+					gostop();
 				} 
 				else
 				{
@@ -125,9 +136,11 @@ int main(int argc, char *argv[]) {
 			/*전부 다 끝나면 플레이어의 승패를 결정, 돈을 정산하고 파산 여부를 확인한다. 파산하거나 카드 거의다쓰면 게임오버를 1로 바꿈.*/ 
 		}
 			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝
-			끝나는 조건- 카드 (거의)다 쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정*/ 
+			끝나는 조건- 카드 (거의)다 쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정
+			mymoney 변수가 가장 많은 플레이어가 승리한다.*/ 
 	}
 	while (gameover==0);
+	
 		 
 		
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
