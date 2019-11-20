@@ -9,6 +9,7 @@ void betmoney();
 
 int carddraw();
 void offercards();
+void givemorecard();
 int sumcards();
 int thiscardnumber();
 int checksum21();

@@ -39,6 +39,16 @@ void offercards()
 	return;
 }
 
+void givemorecard(int playernum)
+{
+	extern int mycard[N_maxplayer+1][N_maxhand];
+	extern int N_player;
+	extern int howmuchcard[];
+	
+	mycard[playernum][howmuchcard[playernum]]=carddraw();
+	
+}
+
 int sumcards(int playernum)
 /*A번째 플레이어가 지금까지 받은 카드의 합을 계산하는 함수.*/ 
 {

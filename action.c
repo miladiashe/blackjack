@@ -9,10 +9,14 @@ int gostop()
 	gostop = getIntegerInput();
 	if (gostop == 1)
 	{
+		printf("\n한 장 더 드리겠습니다.\n");
+		givemorecard(0);
 	}
 	else
 	{
+		printf("\n알겠습니다.\n");
 		playerstatus[0] = 2;
+
 	} 
 }
 /*플레이어 턴 전용, 카드를 받을지 말지 행동을 정하는 함수*/ 

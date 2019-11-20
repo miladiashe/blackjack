@@ -113,6 +113,7 @@ int main(int argc, char *argv[]) {
 				printf (" 입니다.");
 				printf(" 합 [%i]", mycardsum[N_player]);
 				/*딜러가 카드를 공개한다.*/  
+				printingamecard(N_player);
 			}
 			else
 			{
