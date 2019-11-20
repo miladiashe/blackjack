@@ -50,14 +50,23 @@ void betmoney()
 		/*그냥 플레이의 재미를 위해 남은 돈이 없을 경우 다른 대사가 출력되도록 하였다.*/ 
 	}
 	/*NPC의 돈을 거는 부분*/ 
-	/*랜덤함수 이용, 1과 N_MAXBET 사이에 랜덤하게 돈을 건다.*/ 
+	/*랜덤함수 이용, 1과 N_MAXBET ㄴ사이에 랜덤하게 돈을 건다.*/ 
 }
 
 int findwinner()
 {
 	int maxmoney = 0;
+	int i
 	extern int mymoney[N_maxplayer];
 	
+	for(i = 0; i<N_maxplayer; i++)
+    {
+        if(mymoney[i] > maxmoney) //num[i]가 max보다 크다면
+            maxmoney = mymoney[i]; //max 에는 num[i]의 값이 들어감
+    }
+
+
+출처: https://kmj1107.tistory.com/entry/C언어-숫자-5개중-가장-큰-수-구하기-for-문-사용 [토순이네집]
 	
 	/*남은 mymoney 액수로 우승자를 찾아 우승자의 플레이어 번호를 반환하는 함수.*/ 
 } 
@@ -67,10 +76,11 @@ int roundwinner()
 	extern int playerstatus[N_maxplayer+1];
 	extern int N_player;
 	extern int iamwinner[N_maxplayer+1];
+	extern int mycardsum[N_maxplayer+1];
 	int s;
 	if (playerstatus[N_player] == 21)
 	{
-		printf("제가 이겼습니다.");
+		printf("제가 이겼습니다.\n");
 		iamwinner[N_player] = 1;
 		for(s=0; s<N_player; s++)
 		{
@@ -100,8 +110,13 @@ int roundwinner()
 			{
 				iamwinner[s] = 1;
 			}
-			else if
+			else if (mycardsum[N_player] < mycardsum[s])
 			{
+				iamwinner[s] = 1;
+			}
+			else
+			{
+				iamwinner[s] = 0;
 			}
 		}
 	}
@@ -133,10 +148,10 @@ int takemymoney()
 			bet[h] = 0;
 		}
 	}
-	printf ("\n%i달러 남으셨습니다. \n" mymoney[0]);
+	printf ("\n%i달러 남으셨습니다. \n", mymoney[0]);
 	for (h=1; h<N_player; h++)
 	{
-		printf ("\nNPC %i님, %i달러 남으셨습니다. \n" h, mymoney[h]);
+		printf ("\nNPC %i님, %i달러 남으셨습니다. \n", h, mymoney[h]);
 	}
 	/*베팅한 돈을 돌려주는 함수*/ 
 }
