@@ -25,10 +25,13 @@ void offercards()
 	{
 		mycard[i][0] = carddraw();
 		mycard[i][1] = carddraw();
+		sumcards(i);
 	}
 	//2. 딜러에게 두 장을 나누어준다. 
 	mycard[N_player][0] = carddraw();
 	mycard[N_player][1] = carddraw();
+	sumcards(N_player);
+	/*카드를 줄 떄마다 자동으로 합도 같이 구해지도록*/ 
 	
 	return;
 }
@@ -211,6 +214,8 @@ void printinitialcard()
 /*처음 나눠준 카드를 읽어 주는 함수*/ 
 {
 	extern int N_player;
+	extern int mycardsum[N_maxplayer+1];
+	printf ("카드를 나누어 드리겠습니다.");
 	printf ("\n딜러의 카드 : 뒤집은 카드 한 장과");
 	printcard(N_player, 1);
 	/*딜러의 카드 출력*/ 
@@ -218,7 +223,8 @@ void printinitialcard()
 	printf ("\n나의 카드 : ");	
 	printcard(0, 0);
 	printcard(0, 1);
-	/*나의 카드 출력*/ 
+	printf("[%i]", mycardsum[0]);
+	/*나의 카드 출력 [] 안에 들어있는건 합*/ 
 	int tmpplr;
 	for(tmpplr=1; tmpplr<N_player; tmpplr++)
 	{

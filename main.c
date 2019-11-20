@@ -72,7 +72,8 @@ int main(int argc, char *argv[]) {
 		}
 		/*이번 라운드의 플레이어 상태 초기화*/ 
 		for (tmpplr=0; tmpplr<N_maxplayer+1; tmpplr++);
-		{
+		{	
+			mycardsum[tmpplr] = 0;
 			for (tmpplr=0; tmpplr2<N_maxhand; tmpplr2++);
 			{
 				mycard[tmpplr][N_maxhand]=0;
