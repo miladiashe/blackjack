@@ -63,6 +63,11 @@ int thiscardnumber(int playernum, int handnum)
 	{
 		return mycard[playernum][handnum]%1000;
 	}
+	else if (mycard[playernum][handnum]==0)
+	{
+		return 0;
+	}
+	/*합을 구할떄 전체를 더해버리니까 이게 없으면 그냥 아직 없는카드도 에이스로 판정하는듯*/ 
 	else
 	{
 		acestatus[playernum]=1;
