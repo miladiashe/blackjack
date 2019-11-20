@@ -7,6 +7,6 @@ int carddraw();
 void offercards();
 int checksum21();
 int sumcards();
-int thiscardnumber();
+char thiscardnumber();
 void printcard();
 void printinitialcard();
