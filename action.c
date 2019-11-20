@@ -11,6 +11,8 @@ int gostop()
 	{
 		printf("\n한 장 더 드리겠습니다.\n");
 		givemorecard(0);
+		sumcards(0);
+		printingamecard(0);
 	}
 	else
 	{

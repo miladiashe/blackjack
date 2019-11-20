@@ -44,8 +44,12 @@ void givemorecard(int playernum)
 	extern int mycard[N_maxplayer+1][N_maxhand];
 	extern int N_player;
 	extern int howmuchcard[];
+	int i;
+	i = howmuchcard[playernum];
 	
-	mycard[playernum][howmuchcard[playernum]]=carddraw();
+	mycard[playernum][i]= carddraw();
+	howmuchcard[playernum]++;
+	
 	
 }
 

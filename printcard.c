@@ -157,7 +157,7 @@ void printingamecard(int playernum)
 	for(tmpcard=0; tmpcard<howmuchcard[playernum]; tmpcard++)
 	{
 		printcard(playernum, tmpcard);
-		printf(" [%i]", mycardsum[0]);
 	}
+	printf(" [%i]", mycardsum[0]);
 }
 /*게임 내에서 받은 카드들을 주루룩 늘어놓는 함수*/ 
