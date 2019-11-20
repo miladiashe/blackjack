@@ -1,8 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "define.h"
 
 int carddraw()
 /*카드를 한 장 뽑는 함수*/ 
 {
+	extern currentcard;
+	extern int cardtray[];
+	int temp;
+	temp = currentcard;
+	currentcard++;
+	return cardtray[temp];
+	/*현재 남은 카드 중에 제일 위에 있는 카드를 불러와 나눠주고 한장을 더 썼다고 저장한다.*/ 
  } 
 
 void offercards()
@@ -11,13 +20,13 @@ void offercards()
 	extern int mycard[N_maxplayer+1][N_maxhand];
 	extern int N_player;
 	int i;
-	//1. give two card for each players
+	//1. 각 플레이어에게 두 장씩 나누어준다. 
 	for (i=0;i<N_player;i++)
 	{
 		mycard[i][0] = carddraw();
 		mycard[i][1] = carddraw();
 	}
-	//2. give two card for the operator
+	//2. 딜러에게 두 장을 나누어준다. 
 	mycard[N_player][0] = carddraw();
 	mycard[N_player][1] = carddraw();
 	
@@ -39,7 +48,7 @@ int sumcards(int playernum)
 }
 
 int thiscardnumber(int playernum, int handnum)
-/*카드의 값(게임할 때 실제로 쓰이는)를 추출하는 기능*/ 
+/*카드의 값(게임할 때 실제로 쓰이는)를 추출하는 기능 playernum번 플레이어의 handnum번째 카드를 입력받는다. */ 
 {
 }
 

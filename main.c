@@ -29,7 +29,7 @@ int cardtray[N_CARDSET*N_CARD];
 int acestatus[N_maxplayer];
 /*몇 번째 플레이어가 에이스를 받았는지 여부 저장하는 곳. 일단 전역변수로 만들어보자.*/ 
 int currentcard;
-/*현재 카드가 몇 장 남았는지 담아두는 변수*/ 
+/*현재 카드를 몇 장 사용했는지 담아두는 변수*/ 
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 

@@ -74,6 +74,8 @@ void makecards(){
 			cardtray[tempcard2+tempcard*N_CARD]= trump [tempcard2];
 		}
 	}
+	extern currentcard; 
+	currentcard = 0;
 	
 	printf ("\n카드 %i벌이 준비되었습니다.\n", N_CARDSET);
 	 
