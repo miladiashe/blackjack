@@ -49,6 +49,8 @@ int main(int argc, char *argv[]) {
 	/*지금이 n번째 라운드인지 저장하는 변수*/ 
 	playerconfig();
 		/*player 수를 설정한다. 돈도 미리 준다.*/ 
+	int winner = N_maxplayer;
+	/*우승자를 기록하는 변수 미리 선언한다. 동작 여부와 버그를 확인하기 위해 초기값은 딜러로 해 둔다*/ 
 	makecards();
 	/*디버깅을 위해 삽입한 부분. 카드가 잘 만들어졌는지 확인하려면 이 부분을 주석에서 뺴내보자.
 			int i; 
@@ -140,12 +142,52 @@ int main(int argc, char *argv[]) {
 		}
 			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝
 			끝나는 조건- 카드 (거의)다 쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정
-			mymoney 변수가 가장 많은 플레이어가 승리한다.*/ 
+			mymoney 변수가 가장 많은 플레이어가 승리한다.*/
+		if (currentcard>((N_CARDSET*N_CARD)-(N_player+1*2)))
+		{
+			gameover = 1;
+		/*카드가 2장씩 나눠줄 수 없을 만큼 줄어들면 게임을 끝낸다.*/
+		}
+		for (tmpplr=0; tmpplr<N_maxplayer; tmpplr++)
+		{
+			if (mymoney[tmpplr]<=0)
+			{
+				gameover=2;
+			}
+			/*mymoney[N_player]가 전부 0인지 검사해보는 함수*/
+		/*플레이어 한명 파산시 게임을 끝낸다.*/ 
+		}
+		 
 	}
 	while (gameover==0);
 	
-		 
-		
+	if (gameover==2)
+	{
+		/*한 명이 파산했을 때 게임의 엔딩*/ 
+		printf ("\n\n한 분이 파산하셨으므로 여기에서 게임을 끝냅니다.\n");
+	} 
+	else if (gameover==1)
+	{
+		/*카드를 다 썼을 때 게임의 엔딩*/ 
+		printf ("\n\n카드를 다 썼으므로 여기에서 게임을 끝냅니다.\n");
+	}
+	
+	winner = findwinner();
+	
+	if (winner==0)
+	{
+		printf ("\n\n축하드립니다, 우승하셨군요.\n");
+	}
+	else if (winner==N_player) 
+	{
+		printf ("\n\n우승자가.. 저인가요? 이럴 리 없는데. 오류인 것 같습니다.\n");
+	}
+	else
+	{
+		printf ("\n\nNPC %i 님 우승 축하드립니다.\n", winner);
+	} 
+	
+	
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
 
 	/*3-세부적 구현방법- 만들다 필요해진 것*/ 

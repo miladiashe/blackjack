@@ -52,3 +52,8 @@ void betmoney()
 	/*NPC의 돈을 거는 부분*/ 
 	/*랜덤함수 이용, 1과 N_MAXBET 사이에 랜덤하게 돈을 건다.*/ 
 }
+
+int findwinner()
+{
+	/*남은 mymoney 액수로 우승자를 찾아 우승자의 플레이어 번호를 반환하는 함수.*/ 
+} 
