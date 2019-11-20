@@ -93,19 +93,27 @@ int main(int argc, char *argv[]) {
 			//완료 
 		offercards(); 
 		/*일단 위에서부터  1장씩 2번  나눠갖는다(딜러는 한장 엎어둔다)*/
+		//완료 
 			for (tmpplr=0; tmpplr<N_player; tmpplr++);
 		{
-			playerstatus[tmpplr] = checksum21(tmpplr);
+			checksum21(tmpplr);
 		}
 		/*카드를 나눠준 후 모든 플레이어의 블랙잭 여부를 확인*/ 
 		printinitialcard();
 		/*offercards에서 준 최초 두장을 보여주는 함수.*/ 
+		//완료 
 
-		for (tmpplr2=0; tmpplr<N_player+1; tmpplr++);
+		for (tmpplr=0; tmpplr2<N_player+1; tmpplr2++);
 		{
-			if (tmpplr2 == 0)
+			if (tmpplr == 0)
 			{
 				printf ("\n\n당신의 차례입니다.\n");
+				while (playerstatus[tmpplr] == 0)
+				{
+					printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
+					gostop();
+				}
+				
 			} 
 			else if (tmpplr == N_player)
 			{
@@ -116,28 +124,21 @@ int main(int argc, char *argv[]) {
 				printf(" 합 [%i]", mycardsum[N_player]);
 				/*딜러가 카드를 공개한다.*/  
 				printingamecard(N_player);
+				npcgo(tmpplr);
+				
 			}
 			else
 			{
-				printf ("\n\nNPC %i 님의 차례입니다.\n", tmpplr2);
-			}
-			/*각 플레이어의 턴을 나타내는 for 문이다.if 문을 이용해 사용자의 턴과 NPC의 턴을 구분하고 전체적으로는 같은 루프에 넣는다.*/
-			while (playerstatus[tmpplr]==0)
-			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
-			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
-			{
-				printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
-				if (tmpplr2 == 0)
-				{
-					/*플레이어의 턴 구현*/
-					gostop();
-				} 
-				else
+				printf ("\n\nNPC %i 님의 차례입니다.\n", tmpplr);
+				while (playerstatus[tmpplr] == 0)
 				{
 					npcgo(tmpplr);
-					/*npc의 턴 구현*/ 
 				}
 			}
+			/*각 플레이어의 턴을 나타내는 for 문이다.if 문을 이용해 사용자의 턴과 NPC의 턴을 구분하고 전체적으로는 같은 루프에 넣는다.*/
+			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
+			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
+
 			/*전부 다 끝나면 플레이어의 승패를 결정, 돈을 정산하고 파산 여부를 확인한다. 파산하거나 카드 거의다쓰면 게임오버를 1로 바꿈.*/ 
 		}
 			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝

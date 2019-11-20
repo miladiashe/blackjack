@@ -12,7 +12,18 @@ int gostop()
 		printf("\n한 장 더 드리겠습니다.\n");
 		givemorecard(0);
 		sumcards(0);
+		checksum21(0);
 		printingamecard(0);
+		if (playerstatus[0] == 21)
+		{
+			printf("\n축하드립니다.\n"); 
+		}
+		else if (playerstatus[0] > 21)
+		{
+			printf("\n 안타깝군요.\n"); 
+		}
+		
+		
 	}
 	else
 	{
@@ -37,6 +48,9 @@ int npcgo(int playernum)
 	{
 		/*자동 go*/ 
 		givemorecard(playernum);
+		sumcards(playernum);
+		checksum21(playernum);
+		printingamecard(playernum);
 	}
 	else
 	{

@@ -126,6 +126,7 @@ void printinitialcard()
 {
 	extern int N_player;
 	extern int mycardsum[N_maxplayer+1];
+	extern int playerstatus[N_maxplayer+1];
 	printf ("\n카드를 나누어 드리겠습니다.");
 	printf ("\n딜러의 카드 : 뒤집은 카드 한 장과");
 	printcard(N_player, 1);
@@ -135,7 +136,12 @@ void printinitialcard()
 	printcard(0, 0);
 	printcard(0, 1);
 	printf(" [%i]", mycardsum[0]);
-	/*나의 카드 출력 [] 안에 들어있는건 합*/ 
+	if (playerstatus[0] == 21)
+	{
+		/*블랙잭 여부 출력*/ 
+		printf(" [BLACKJACK]");		
+	}
+	/*나의 카드 출력 [] 안에 들어있는건 합*/  
 	int tmpplr;
 	for(tmpplr=1; tmpplr<N_player; tmpplr++)
 	{
@@ -144,6 +150,10 @@ void printinitialcard()
 		printcard(tmpplr, 0);
 		printcard(tmpplr, 1);
 		printf(" [%i]", mycardsum[tmpplr]);
+		if (playerstatus[tmpplr] == 21)
+		{
+			printf(" [BLACKJACK]");	
+		}
 	}
 	/*NPC의 카드 출력*/ 
 	
@@ -153,11 +163,16 @@ void printingamecard(int playernum)
 {
 	extern int howmuchcard[N_maxplayer+1];
 	extern int mycardsum[N_maxplayer+1];
+	extern int playerstatus[N_maxplayer+1];
 	int tmpcard;
 	for(tmpcard=0; tmpcard<howmuchcard[playernum]; tmpcard++)
 	{
 		printcard(playernum, tmpcard);
 	}
 	printf(" [%i]", mycardsum[0]);
+	if (playerstatus[0] == 21)
+	{
+		printf(" [BLACKJACK]");		
+	}
 }
 /*게임 내에서 받은 카드들을 주루룩 늘어놓는 함수*/ 
