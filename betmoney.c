@@ -67,12 +67,46 @@ int roundwinner()
 	extern int playerstatus[N_maxplayer+1];
 	extern int N_player;
 	extern int iamwinner[N_maxplayer+1];
+	int s;
 	if (playerstatus[N_player] == 21)
 	{
-		iamwinner[N_player] = 1
+		printf("제가 이겼습니다.");
+		iamwinner[N_player] = 1;
+		for(s=0; s<N_player; s++)
+		{
+			iamwinner[N_player] = 0;
+		}
 		/*딜러승리*/
 		/*iamwinner[N_maxplayer+1]에 딜러 칸 말고 전부 0*/
 	}
+	else if (playerstatus[N_player] == 1)
+	{
+		iamwinner[N_player] = 0;
+		for(s=0; s<N_player; s++)
+		{
+			if(playerstatus[s] != 1)
+			{
+				iamwinner[s] = 0;
+			}
+			/*딜러사망*/ 
+		}
+	}
+	else
+	{
+		iamwinner[N_player] = 0;
+		for(s=0; s<N_player; s++)
+		{
+			if (playerstatus[s] == 21)
+			{
+				iamwinner[s] = 1;
+			}
+			else if
+			{
+			}
+		}
+	}
+
+	
 	/*각 라운드마다 이 함수로 우승자를 찾자*/ 
 	takemymoney();
 	
@@ -98,6 +132,11 @@ int takemymoney()
 			/*베팅한 금액의 두 배를 돌려준다.*/ 
 			bet[h] = 0;
 		}
+	}
+	printf ("\n%i달러 남으셨습니다. \n" mymoney[0]);
+	for (h=1; h<N_player; h++)
+	{
+		printf ("\nNPC %i님, %i달러 남으셨습니다. \n" h, mymoney[h]);
 	}
 	/*베팅한 돈을 돌려주는 함수*/ 
 }
