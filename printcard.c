@@ -30,9 +30,13 @@ char printcard(int playernum, int handnum)
 		{
 			printf("%i", mycard[playernum][handnum]%1000);
 		}
-		else
+		else if (mycard[playernum][handnum]%1000>1)
 		{
 			printf("A");
+		}
+		else
+		{
+			printf("joker");
 		}
 	}
 	else if (mycard[playernum][handnum]<2000) //´ÙÀÌ¾Æ 
