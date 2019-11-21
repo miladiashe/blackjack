@@ -78,7 +78,7 @@ int sumcards(int playernum)
 	if (cardsum > 21)
 	{
 		
-		if (acestatus[playernum]>0)
+		while (acestatus[playernum]>0)
 		{
 			cardsum - 10;
 			acestatus[playernum] - 1;
