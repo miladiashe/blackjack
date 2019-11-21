@@ -163,7 +163,7 @@ int takemymoney()
 	
 	for (h=0; h<N_player; h++)
 	{
-		if (iamwinner[h]=0)
+		if (iamwinner[h]==0)
 		{
 			bet[h] = 0;
 			/*베팅 액수는 초기화를 여기서 한다*/ 
@@ -176,7 +176,7 @@ int takemymoney()
 			bet[h] = 0;
 		}
 	}
-	if (iamwinner[0]=1)
+	if (iamwinner[0]==1)
 	{
 		printf ("\n승리 축하드립니다.");
 	}
