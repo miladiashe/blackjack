@@ -24,4 +24,4 @@ void printingamecard();
 
 int gostop();
 int npcgo();
-
+int dealergo();

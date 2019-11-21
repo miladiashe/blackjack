@@ -39,69 +39,65 @@ int npcgo(int playernum)
 	extern int mycardsum[];
 	extern int N_player;
 	extern int playerstatus[];
-	int dealer = 0;
-	/*딜러 여부, 다른 대사 출력하는 용도*/ 
-	if (playernum =  N_player)
+	if (mycardsum[playernum]<17)
 	{
-		dealer = 1;
-	}
-	if(dealer == 0) 
-	{
-		if (mycardsum[playernum]<17)
+		/*자동 go*/ 
+		printf("\n한 장 더 드리겠습니다.\n");
+		givemorecard(playernum);
+		sumcards(playernum);
+		checksum21(playernum);
+		printingamecard(playernum);
+		if (playerstatus[playernum] == 21)
 		{
-			/*자동 go*/ 
-			printf("\n한 장 더 드리겠습니다.\n");
-			givemorecard(playernum);
-			sumcards(playernum);
-			checksum21(playernum);
-			printingamecard(playernum);
-			if (playerstatus[playernum] == 21)
-			{
-				printf("\n축하드립니다.\n"); 
-			}
-			else if (playerstatus[playernum]>21)
-			{
-				printf("\n 안타깝군요.\n"); 
-			}
-			else
-			{
-			}
+			printf("\n축하드립니다.\n"); 
+		}
+		else if (playerstatus[playernum]>21)
+		{
+			printf("\n 안타깝군요.\n"); 
 		}
 		else
 		{
-			/*stop*/ 
-			printf("\n알겠습니다.\n");
-			playerstatus[playernum] = 2;
 		}
 	}
 	else
 	{
-		if (mycardsum[playernum]<17)
-		{
-			/*자동 go*/ 
-			printf("\n한 장 더 받겠습니다.\n");
-			givemorecard(playernum);
-			sumcards(playernum);
-			checksum21(playernum);
-			printingamecard(playernum);
-			if (playerstatus[playernum] == 21)
-			{
-				printf("\n블랙잭.\n"); 
-			}
-			else if (playerstatus[playernum]>21)
-			{
-				printf("\n 안타깝군요.\n"); 
-			}
-			else
-			{
-			}
-		}
-		else
-		{
-			/*stop*/ 
-			printf("\n스톱.\n");
-			playerstatus[playernum] = 2;
-		}
+		/*stop*/ 
+		printf("\n알겠습니다.\n");
+		playerstatus[playernum] = 2;
 	}
 }
 /*npc의 행동을 결정하는 함수*/ 
+
+int dealergo()
+{
+	extern int mycardsum[];
+	extern int N_player;
+	extern int playerstatus[];
+	if (mycardsum[N_player]<17)
+	{
+		/*자동 go*/ 
+		printf("\n한 장 더 받겠습니다.\n");
+		givemorecard(N_player);
+		sumcards(N_player);
+		checksum21(N_player);
+		printingamecard(N_player);
+		if (playerstatus[N_player] == 21)
+		{
+			printf("\n블랙잭.\n"); 
+		}
+		else if (playerstatus[N_player]>21)
+		{
+			printf("\n 안타깝군요.\n"); 
+		}
+		else
+		{
+		}
+	}
+	else
+	{
+		/*stop*/ 
+		printf("\n스톱.\n");
+		playerstatus[N_player] = 2;
+	}
+}
+/*딜러의 행동을 결정하는 함수. 대사만 다르다.*/ 

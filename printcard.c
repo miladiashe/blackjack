@@ -169,7 +169,7 @@ void printingamecard(int playernum)
 	{
 		printcard(playernum, tmpcard);
 	}
-	printf(" [%i]", mycardsum[0]);
+	printf(" [%i]", mycardsum[playernum]);
 	if (playerstatus[0] == 21)
 	{
 		printf(" [BLACKJACK]");		

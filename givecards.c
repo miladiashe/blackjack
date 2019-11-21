@@ -68,7 +68,6 @@ int sumcards(int playernum)
 	extern mycardsum[];
 	extern int acestatus[];
 	int handA;
-	int tempace;
 	int cardsum = 0;
 	for(handA=0; handA<N_maxhand; handA++)
 	{
@@ -76,11 +75,11 @@ int sumcards(int playernum)
 	}
 	if (cardsum > 21)
 	{
-		acestatus[playernum] = tempace;
-		if (tempace>0)
+		
+		if (acestatus[playernum]>0)
 		{
 			cardsum - 10;
-			tempace - 1;
+			acestatus[playernum] - 1;
 		}
 	}
 	mycardsum[playernum] = cardsum;

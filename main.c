@@ -126,11 +126,12 @@ int main(int argc, char *argv[]) {
 				printf ("제가 받은 첫 번째 카드는 ");
 				printcard(N_player, 0);
 				printf (" 입니다.");
-				printf(" 합 [%i]", mycardsum[N_player]);
 				/*딜러가 카드를 공개한다.*/  
 				printingamecard(N_player);
-				npcgo(tmpplr);
-				
+				while (playerstatus[tmpplr] == 0)
+				{
+					dealergo();
+				}
 			}
 			else
 			{
@@ -151,7 +152,7 @@ int main(int argc, char *argv[]) {
 			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
 		}
 			roundwinner();
-			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝 반복문 1 끝*/
+			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝*/
 			
 			/*전부 다 끝나면 플레이어의 승패를 결정, 돈을 정산하고 파산 여부를 확인한다. 파산하거나 카드 거의다쓰면 게임오버를 1로 바꿈.
 			끝나는 조건- 카드 (거의)다 쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정
