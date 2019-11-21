@@ -18,7 +18,7 @@ int gostop()
 		{
 			printf("\n축하드립니다.\n"); 
 		}
-		else if (playerstatus[0]>21)
+		else if (playerstatus[0] == 1)
 		{
 			printf("\n 안타깝군요.\n"); 
 		}
@@ -51,7 +51,7 @@ int npcgo(int playernum)
 		{
 			printf("\n축하드립니다.\n"); 
 		}
-		else if (playerstatus[playernum]>21)
+		else if (playerstatus[playernum] == 1)
 		{
 			printf("\n 안타깝군요.\n"); 
 		}
