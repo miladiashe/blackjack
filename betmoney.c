@@ -201,3 +201,16 @@ int takemymoney()
 	}
 	/*베팅한 돈을 돌려주는 함수*/ 
 }
+
+int moneyback()
+/*중간에 게임 끝났을 떄만 씀.*/ 
+{
+	extern int mymoney[N_maxplayer];
+	extern int bet[N_maxplayer];
+	for (h=1; h<N_player; h++)
+	{
+		mymoney[h] = mymoney[h]+(bet[h]);
+		/*베팅한 금액만큼을  돌려준다.*/ 
+		bet[h] = 0;
+	}
+}

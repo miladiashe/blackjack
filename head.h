@@ -10,6 +10,7 @@ void betmoney();
 int findwinner();
 int roundwinner();
 int takemymoney();
+int moneyback();
 
 int carddraw();
 void offercards();

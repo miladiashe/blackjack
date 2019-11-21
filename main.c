@@ -114,15 +114,15 @@ int main(int argc, char *argv[]) {
 			if (tmpplr == 0)
 			{
 				printf ("\n\n당신의 차례입니다.\n");
-					while (playerstatus[tmpplr] == 0) 
+				while (playerstatus[tmpplr] == 0) 
+				{
+					printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
+					gostop();
+					if (gameover==3)/*중간에 게임을 끝내는 방법*/ 
 					{
-						printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
-						gostop();
-						if (gameover==0)
-						{
-							break;
-						}
+						break;
 					}
+				}
 
 				
 			} 
@@ -137,6 +137,10 @@ int main(int argc, char *argv[]) {
 				while (playerstatus[tmpplr] == 0)
 				{
 					dealergo();
+					if (gameover==3)/*중간에 게임을 끝내는 방법*/ 
+					{
+						break;
+					}
 				}
 			}
 			else
@@ -150,19 +154,34 @@ int main(int argc, char *argv[]) {
 				{
 					printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
 					npcgo(tmpplr);
+					if (gameover==3)/*중간에 게임을 끝내는 방법*/ 
+					{
+						break;
+					}
 				}
 			}
 
 			/*각 플레이어의 턴을 나타내는 for 문이다.if 문을 이용해 사용자의 턴과 NPC의 턴을 구분하고 전체적으로는 같은 루프에 넣는다.*/
 			/*playerstatus[tmpplr] 이 0이 아닌 경우=위에서 미리 블랙잭이 된 경우 는 이 부분을 스킵하도록 while 사용*/ 
 			/*이 while 이 한 번 돌아갈 때마다 카드를 받을지 말지 한번 결정한다.*/ 
+			if (gameover==3)/*중간에 게임을 끝내는 방법*-안쪽 while에서 탈출한 다음 이 for에서도 탈출하기 위해 사용*/
+			{
+				break;
+			}
+		}
+			if (gameover==3)/*중간에 게임을 끝내는 방법- 끝까지 가면 어차피 빠져나갈 상황이지만 다른 체크를 건너뛰기 위해 여기서도 break를 써준다.*/ 
+		{
+			/*그러면서 중간에 게임이 끝났기 때문에 베팅한 돈을 돌려준다.*/ 
+			printf("\n게임이 중간에 끝났기 때문에 베팅한 금액은 돌려드리겠습니다.");
+			int moneyback(); 
+			break;
 		}
 			roundwinner();
 			/*딜러의 턴을 마치고 승패 결정, 베팅액수 돌려주고 한 라운드 끝*/
 			
 			/*전부 다 끝나면 플레이어의 승패를 결정, 돈을 정산하고 파산 여부를 확인한다. 파산하거나 카드 거의다쓰면 게임오버를 1로 바꿈.
 			끝나는 조건- 카드 (거의)다 쓰거나 플레이어 한명 파산시. 자본량으로 승리자 결정
-			mymoney 변수가 가장 많은 플레이어가 승리한다.*/
+			mymoney 변수가 가장 많은 플레이어가 승리한다.*/ 
 		if (currentcard>((N_CARDSET*N_CARD)-(N_player+1*2)))
 		{
 			gameover = 1;
@@ -207,10 +226,7 @@ int main(int argc, char *argv[]) {
 		printf ("\n\nNPC %i 님 우승 축하드립니다.\n", winner);
 	} 
 	
-	
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
-
 	/*3-세부적 구현방법- 만들다 필요해진 것*/ 
-	
 	return 0;
 }
