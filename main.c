@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
 
 		++round;
 		printf ("\n - ROUND %i - \n", round);
-		printf ("[%i장 사용] \n", currentcard);
+		printf ("[현재까지 %i장 사용] \n", currentcard);
 		int wtf2;
 		for (wtf2=0; wtf2<N_maxplayer; wtf2++)
 		{

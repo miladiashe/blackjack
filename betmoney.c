@@ -98,10 +98,10 @@ int roundwinner()
 	}
 	else if (playerstatus[N_player] == 1)
 	{
+		printf("딜러인 제가 죽었으니, 살아남은 모든 분이 승리하셨습니다.\n");
 		iamwinner[N_player] = 0;
 		for(s=0; s<N_player; s++)
 		{
-			printf("딜러인 제가 죽었으니, 살아남은 모든 분이 승리하셨습니다.\n");
 			if(playerstatus[s] != 1)
 			{
 				iamwinner[s] = 1;
