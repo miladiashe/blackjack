@@ -8,9 +8,17 @@ int carddraw()
 	extern currentcard;
 	extern int cardtray[];
 	int temp;
-	temp = currentcard;
-	currentcard++;
-	return cardtray[temp];
+	if (currentcard != N_CARDSET*N_CARD)
+	{
+		temp = currentcard;
+		currentcard++;
+		return cardtray[temp];
+	}
+	else
+	{
+		return 0;
+	}
+	/*혹시몰라서 카드가 다떨어지면 0을 반환하도록 해줬다.*/ 
 	/*현재 남은 카드 중에 제일 위에 있는 카드를 불러와 나눠주고 한장을 더 썼다고 저장한다.*/ 
  } 
 
@@ -48,6 +56,7 @@ void givemorecard(int playernum)
 	i = howmuchcard[playernum];
 	
 	mycard[playernum][i]= carddraw();
+	
 	howmuchcard[playernum]++;
 	
 	

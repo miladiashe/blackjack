@@ -48,14 +48,27 @@ int npcgo(int playernum)
 	if (mycardsum[playernum]<17)
 	{
 		/*자동 go*/ 
+		printf("\n한 장 더 드리겠습니다.\n");
 		givemorecard(playernum);
 		sumcards(playernum);
 		checksum21(playernum);
 		printingamecard(playernum);
+		if (playerstatus[playernum] == 21)
+		{
+			printf("\n축하드립니다.\n"); 
+		}
+		else if (playerstatus[playernum]>21)
+		{
+			printf("\n 안타깝군요.\n"); 
+		}
+		else
+		{
+		}
 	}
 	else
 	{
 		/*stop*/ 
+		printf("\n알겠습니다.\n");
 		playerstatus[playernum] = 2;
 	}
 }

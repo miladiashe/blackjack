@@ -57,14 +57,22 @@ int findwinner()
 {
 	int maxmoney = 0;
 	int i;
+	int tmpwinner; 
 	extern int mymoney[N_maxplayer];
 	
 	for(i = 0; i<N_maxplayer; i++)
     {
-        if(mymoney[i] > maxmoney) //num[i]가 max보다 크다면
-            maxmoney = mymoney[i]; //max 에는 num[i]의 값이 들어감
+        if(mymoney[i] > maxmoney) 
+            maxmoney = mymoney[i]; 
+            /*mymoney[i]의 값 중 제일 큰 게  maxmoney에  들어 감*/ 
     }
-
+    for(i = 0; i<N_maxplayer; i++)
+    {
+        if(mymoney[i] == maxmoney) 
+            tmpwinner = i; 
+            /*maxmoney에 들어간 i값을 tmpwinner에 넣는다.*/ 
+    }
+	return tmpwinner;
 	
 	/*남은 mymoney 액수로 우승자를 찾아 우승자의 플레이어 번호를 반환하는 함수.*/ 
 } 
