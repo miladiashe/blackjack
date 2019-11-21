@@ -207,6 +207,8 @@ int moneyback()
 {
 	extern int mymoney[N_maxplayer];
 	extern int bet[N_maxplayer];
+	int h; 
+	extern int N_player;
 	for (h=1; h<N_player; h++)
 	{
 		mymoney[h] = mymoney[h]+(bet[h]);
