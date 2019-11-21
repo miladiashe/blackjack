@@ -40,7 +40,9 @@ void offercards()
 	}
 	//2. 딜러에게 두 장을 나누어준다. 
 	mycard[N_player][0] = carddraw();
+	howmuchcard[N_player]++;
 	mycard[N_player][1] = carddraw();
+	howmuchcard[N_player]++;
 	sumcards(N_player);
 	/*카드를 줄 떄마다 자동으로 합도 같이 구해지도록*/ 
 	
