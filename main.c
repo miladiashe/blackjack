@@ -226,6 +226,10 @@ int main(int argc, char *argv[]) {
 		printf ("\n\nNPC %i 님 우승 축하드립니다.\n", winner);
 	} 
 	
+	printf ("\n플레이해 주셔서 감사합니다.\n");
+	printf ("생명시스템학부 김아영\n");
+	reading();
+	
 	/*2- 세부적 구현방법- 정의서에 명시된 것*/
 	/*3-세부적 구현방법- 만들다 필요해진 것*/ 
 	return 0;

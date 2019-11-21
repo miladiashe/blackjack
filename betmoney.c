@@ -134,10 +134,10 @@ int roundwinner()
 			}
 			else
 			{
-				if (mycardsum[N_player] < mycardsum[s])
+				if (mycardsum[N_player] <= mycardsum[s])
 				{
 					iamwinner[s] = 1;
-					/*21 안넘고 블랙잭도 아닌데 딜러보다 높은 사람은 승리*/
+					/*21 안넘고 블랙잭도 아닌데 딜러보다 같거나 높은 사람은 승리*/
 				}
 				else
 				{

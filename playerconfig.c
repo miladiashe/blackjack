@@ -11,7 +11,7 @@ void playerconfig(){
 	N_player = getIntegerInput();
 	}
 	while ( N_player<1 || N_player>N_maxplayer-1);
-	printf("%i분이시군요. 어서오십시오.\n", N_player);
+	printf("총 %i분이시군요. 어서오십시오.\n", N_player+1);
 	N_player++;
 	
 	extern mymoney[]; 
