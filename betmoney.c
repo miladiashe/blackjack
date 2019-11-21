@@ -149,7 +149,7 @@ int takemymoney()
 		}
 		else
 		{
-			mymoney[h] = (2*bet[h]);
+			mymoney[h] = mymoney[h]+(2*bet[h]);
 			/*베팅한 금액의 두 배를 돌려준다.*/ 
 			bet[h] = 0;
 		}
