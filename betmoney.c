@@ -90,8 +90,15 @@ int roundwinner()
 		printf("¡¶∞° ¿Ã∞ÂΩ¿¥œ¥Ÿ.\n");
 		iamwinner[N_player] = 1;
 		for(s=0; s<N_player; s++)
-		{
+		{ 
+			if (playerstatus[N_player] ==21)
+			{
+			iamwinner[N_player] = 1;
+			}
+			else
+			{
 			iamwinner[N_player] = 0;
+			}
 		}
 		/*µÙ∑Ø ∫Ì∑¢¿Ë¿∏∑Œ Ω¬∏Æ*/
 		/*iamwinner[N_maxplayer+1]ø° µÙ∑Ø ƒ≠ ∏ª∞Ì ¿¸∫Œ 0*/

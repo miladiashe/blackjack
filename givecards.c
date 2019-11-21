@@ -75,17 +75,20 @@ int sumcards(int playernum)
 	int handA;
 	int tempace;
 	int cardsum = 0;
+	/*여기 고칠것*/ 
+	acestatus[playernum] = 0;
 	for(handA=0; handA<N_maxhand; handA++)
 	{
 		cardsum = cardsum + thiscardnumber(playernum, handA);
+		/*항상 새로 합을 구하면서 덤으로 에이스 여부까지 다시 체크하기 때문에 여기서 에이스여부를 초기화해주고 다시 돌린다.*/ 
 		tempace = acestatus[playernum];
 	}
 	if (cardsum > 21)
 	{
 		while (tempace>0)
 		{
-			cardsum - 10;
-			tempace - 1;
+			cardsum = cardsum - 10;
+			tempace = tempace - 1;
 		}
 	}
 	mycardsum[playernum] = cardsum;
