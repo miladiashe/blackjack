@@ -45,31 +45,63 @@ int npcgo(int playernum)
 	{
 		dealer = 1;
 	}
-	if (mycardsum[playernum]<17)
+	if(dealer == 0) 
 	{
-		/*자동 go*/ 
-		printf("\n한 장 더 드리겠습니다.\n");
-		givemorecard(playernum);
-		sumcards(playernum);
-		checksum21(playernum);
-		printingamecard(playernum);
-		if (playerstatus[playernum] == 21)
+		if (mycardsum[playernum]<17)
 		{
-			printf("\n축하드립니다.\n"); 
-		}
-		else if (playerstatus[playernum]>21)
-		{
-			printf("\n 안타깝군요.\n"); 
+			/*자동 go*/ 
+			printf("\n한 장 더 드리겠습니다.\n");
+			givemorecard(playernum);
+			sumcards(playernum);
+			checksum21(playernum);
+			printingamecard(playernum);
+			if (playerstatus[playernum] == 21)
+			{
+				printf("\n축하드립니다.\n"); 
+			}
+			else if (playerstatus[playernum]>21)
+			{
+				printf("\n 안타깝군요.\n"); 
+			}
+			else
+			{
+			}
 		}
 		else
 		{
+			/*stop*/ 
+			printf("\n알겠습니다.\n");
+			playerstatus[playernum] = 2;
 		}
 	}
 	else
 	{
-		/*stop*/ 
-		printf("\n알겠습니다.\n");
-		playerstatus[playernum] = 2;
+		if (mycardsum[playernum]<17)
+		{
+			/*자동 go*/ 
+			printf("\n한 장 더 받겠습니다.\n");
+			givemorecard(playernum);
+			sumcards(playernum);
+			checksum21(playernum);
+			printingamecard(playernum);
+			if (playerstatus[playernum] == 21)
+			{
+				printf("\n블랙잭.\n"); 
+			}
+			else if (playerstatus[playernum]>21)
+			{
+				printf("\n 안타깝군요.\n"); 
+			}
+			else
+			{
+			}
+		}
+		else
+		{
+			/*stop*/ 
+			printf("\n스톱.\n");
+			playerstatus[playernum] = 2;
+		}
 	}
 }
 /*npc의 행동을 결정하는 함수*/ 

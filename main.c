@@ -135,6 +135,10 @@ int main(int argc, char *argv[]) {
 			else
 			{
 				printf ("\n\nNPC %i 님의 차례입니다.\n", tmpplr);
+				if  (playerstatus[tmpplr] == 21)
+				{
+					printf ("블랙잭이군요. 축하드립니다.");
+				}
 				while (playerstatus[tmpplr] == 0)
 				{
 					printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
