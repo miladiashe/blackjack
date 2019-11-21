@@ -18,10 +18,12 @@ int gostop()
 		if (playerstatus[0] == 21)
 		{
 			printf("\n축하드립니다.\n"); 
+			reading();
 		}
 		else if (playerstatus[0] == 1)
 		{
 			printf("\n 안타깝군요.\n"); 
+			reading();
 		}
 		else
 		{
@@ -30,7 +32,7 @@ int gostop()
 	}
 	else
 	{
-		printf("\n알겠습니다.\n");
+		printf("\n그만 받으시겠습니까. 알겠습니다.\n");
 		printf("현재 카드를 다시 한 번 보여드리겠습니다.");
 		printingamecard(0);
 		playerstatus[0] = 2;
@@ -70,7 +72,7 @@ int npcgo(int playernum)
 	else
 	{
 		/*stop*/ 
-		printf("\n알겠습니다.\n");
+		printf("\n그만 받으시겠습니까. 알겠습니다.\n");
 		printf("현재 카드를 다시 한 번 보여드리겠습니다.");
 		printingamecard(playernum);
 		playerstatus[playernum] = 2;
