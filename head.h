@@ -4,6 +4,7 @@ void makecards();
 void mixcards();
 
 int getIntegerInput();
+int reading();
 
 void betmoney();
 int findwinner();
@@ -16,6 +17,7 @@ void givemorecard();
 int sumcards();
 int thiscardnumber();
 int checksum21();
+int checkIngameLastcard();
 
 
 void printcard();

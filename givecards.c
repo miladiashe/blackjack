@@ -7,8 +7,9 @@ int carddraw()
 {
 	extern currentcard;
 	extern int cardtray[];
+	extern int gameover;
 	int temp;
-	if (currentcard != N_CARDSET*N_CARD)
+	if (currentcard <= N_CARDSET*N_CARD)
 	{
 		temp = currentcard;
 		currentcard++;
@@ -16,7 +17,8 @@ int carddraw()
 	}
 	else
 	{
-		return 0;
+		gameover=3; 
+		return cardtray[0];
 	}
 	/*혹시몰라서 카드가 다떨어지면 0을 반환하도록 해줬다.*/ 
 	/*현재 남은 카드 중에 제일 위에 있는 카드를 불러와 나눠주고 한장을 더 썼다고 저장한다.*/ 
@@ -61,6 +63,7 @@ void givemorecard(int playernum)
 	
 	howmuchcard[playernum]++;
 	
+	checkIngameLastcard();
 	
 }
 
@@ -136,3 +139,14 @@ playerstatus를 다른 함수에도 건드려야 하기 떄문에 그냥 전역변수로 바꾸었ek.*/
 	mycardsum[a] 를 이용, 이 함수의 힙에 따라  0일 시 아무것도 아님, 1일 시 21 초과로 게임 오버, 2일 시 카드 받기 중지 , 21일 시 블랙잭 의 값을 돌려준다.*/
  }
  
+int checkIngameLastcard()
+{
+	extern int gameover;
+	if(gameover==3)
+	{
+		printf("\n이런, 카드를 다 썼군요.\n게임을 끝내겠습니다.");
+	}
+	/*게임 중간에 카드를 다 썼는지 확인해서 게임을 끝내는 용도의 함수. 게임 중간에만 사용한다.*/
+	/*매 라운드 offercards 만큼 나눠줄수있는지는 확인하니 처음 카드를 나눠줄때는 삽입하지 않아도 되는 함수.*/ 
+}
+

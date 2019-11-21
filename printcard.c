@@ -30,13 +30,9 @@ char printcard(int playernum, int handnum)
 		{
 			printf("%i", mycard[playernum][handnum]%1000);
 		}
-		else if (mycard[playernum][handnum]%1000>1)
-		{
-			printf("A");
-		}
 		else
 		{
-			printf("joker");
+			printf("A");
 		}
 	}
 	else if (mycard[playernum][handnum]<2000) //다이아 
@@ -159,6 +155,7 @@ void printinitialcard()
 		}
 	}
 	/*NPC의 카드 출력*/ 
+	reading();
 	
 }
 

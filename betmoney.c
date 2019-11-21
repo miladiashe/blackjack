@@ -51,6 +51,7 @@ void betmoney()
 	}
 	/*NPC의 돈을 거는 부분*/ 
 	/*랜덤함수 이용, 1과 N_MAXBET ㄴ사이에 랜덤하게 돈을 건다.*/ 
+	reading();
 }
 
 int findwinner()
@@ -148,7 +149,6 @@ int roundwinner()
 		}
 	}
 
-	
 	/*각 라운드마다 이 함수로 우승자를 찾자*/ 
 	takemymoney();
 	

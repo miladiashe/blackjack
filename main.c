@@ -22,7 +22,8 @@ int mycardsum[N_maxplayer+1];
 int bet[N_maxplayer]; 
 /*베팅한 액수를 담아 두는 변수*/ 
 int gameover = 0;
-/*게임이 완전히 끝났음을 알리는 변수. 0인 경우 진행중. 카드가 다 떨어졌을 경우 1, 한 명이 파산했을 경우 2*/  
+/*게임이 완전히 끝났음을 알리는 변수. 0인 경우 진행중.
+카드가 다 떨어졌을 경우 1, 한 명이 파산했을 경우 2, 중간에 카드가 떨어졌을 경우 3*/  
 int trump[N_CARD];
 /*카드 한 벌*/ 
 int cardtray[N_CARDSET*N_CARD];
@@ -113,11 +114,16 @@ int main(int argc, char *argv[]) {
 			if (tmpplr == 0)
 			{
 				printf ("\n\n당신의 차례입니다.\n");
-				while (playerstatus[tmpplr] == 0)
-				{
-					printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
-					gostop();
-				}
+					while (playerstatus[tmpplr] == 0) 
+					{
+						printf("\n한 장 더 받으시겠습니까? 아니면 여기서 멈추시겠습니까?\n");
+						gostop();
+						if (gameover==0)
+						{
+							break;
+						}
+					}
+
 				
 			} 
 			else if (tmpplr == N_player)
