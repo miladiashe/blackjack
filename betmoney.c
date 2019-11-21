@@ -109,6 +109,7 @@ int roundwinner()
 			/*21 초과헤서 playerstatus가 1이 되지 않은 사람은 모두 승리*/ 
 			else
 			{
+				iamwinner[s] = 0;
 			}
 			/*딜러사망*/ 
 
