@@ -160,7 +160,7 @@ int main(int argc, char *argv[]) {
 		if (currentcard>((N_CARDSET*N_CARD)-(N_player+1*2)))
 		{
 			gameover = 1;
-		/*카드가 2장씩 나눠줄 수 없을 만큼 줄어들면 게임을 끝낸다.*/
+		/*카드가 2장씩 나눠줄 수 없을 만큼 줄어들면 게임을 끝낸다. 매 라운드마다 체크*/
 		}
 		int wtf;
 		for (wtf=0; wtf<N_player; wtf++)
@@ -169,8 +169,8 @@ int main(int argc, char *argv[]) {
 			{
 				gameover=2;
 			}
-				/*mymoney[N_player]가 전부 0인지 검사해보는 함수*/
-			/*플레이어 한명 파산시 게임을 끝낸다.*/ 
+			/*mymoney[N_player]가 전부 0인지 검사해보는 함수*/
+			/*플레이어 한명 파산시 게임을 끝낸다. 매 라운드 끝날떄마다 체크*/ 
 		}
 	}
 	while (gameover==0);

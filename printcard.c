@@ -135,7 +135,7 @@ void printinitialcard()
 	printf ("\n나의 카드 : ");	
 	printcard(0, 0);
 	printcard(0, 1);
-	printf(" [%i]", mycardsum[0]);
+	printf(" [%i]\n", mycardsum[0]);
 	if (playerstatus[0] == 21)
 	{
 		/*블랙잭 여부 출력*/ 
@@ -145,7 +145,6 @@ void printinitialcard()
 	int tmpplr;
 	for(tmpplr=1; tmpplr<N_player; tmpplr++)
 	{
-	 	printf ("\n");
 		printf ("\nNPC %i의 카드 : ", tmpplr);	
 		printcard(tmpplr, 0);
 		printcard(tmpplr, 1);

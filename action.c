@@ -29,6 +29,8 @@ int gostop()
 	else
 	{
 		printf("\n알겠습니다.\n");
+		printf("현재 카드를 다시 한 번 보여드리겠습니다.");
+		printingamecard(0);
 		playerstatus[0] = 2;
 
 	} 
@@ -63,6 +65,8 @@ int npcgo(int playernum)
 	{
 		/*stop*/ 
 		printf("\n알겠습니다.\n");
+		printf("현재 카드를 다시 한 번 보여드리겠습니다.");
+		printingamecard(playernum);
 		playerstatus[playernum] = 2;
 	}
 }
@@ -97,6 +101,7 @@ int dealergo()
 	{
 		/*stop*/ 
 		printf("\n스톱.\n");
+		printingamecard(N_player);
 		playerstatus[N_player] = 2;
 	}
 }

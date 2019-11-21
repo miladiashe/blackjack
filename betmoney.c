@@ -92,7 +92,7 @@ int roundwinner()
 		{
 			iamwinner[N_player] = 0;
 		}
-		/*딜러승리*/
+		/*딜러 블랙잭으로 승리*/
 		/*iamwinner[N_maxplayer+1]에 딜러 칸 말고 전부 0*/
 	}
 	else if (playerstatus[N_player] == 1)
@@ -100,30 +100,51 @@ int roundwinner()
 		iamwinner[N_player] = 0;
 		for(s=0; s<N_player; s++)
 		{
+			printf("딜러인 제가 죽었으니, 살아남은 모든 분이 승리하셨습니다.\n");
 			if(playerstatus[s] != 1)
 			{
-				iamwinner[s] = 0;
+				iamwinner[s] = 1;
+			}
+			/*21 초과헤서 playerstatus가 1이 되지 않은 사람은 모두 승리*/ 
+			else
+			{
 			}
 			/*딜러사망*/ 
+
 		}
 	}
 	else
+	/*그 외의  경우*/ 
 	{
 		iamwinner[N_player] = 0;
+		/*딜러는 돈을 걸지 않으므로 그냥 0으로 해도 된다.*/ 
 		for(s=0; s<N_player; s++)
 		{
 			if (playerstatus[s] == 21)
 			{
 				iamwinner[s] = 1;
+				/*블랙잭인 경우 승리.*/ 
 			}
-			else if (mycardsum[N_player] < mycardsum[s])
+			else if(playerstatus[s] == 1) 
 			{
-				iamwinner[s] = 1;
+				/*21이 넘은 사람은 패배.*/
+				iamwinner[s] = 0;
 			}
 			else
 			{
-				iamwinner[s] = 0;
-			}
+				if (mycardsum[N_player] < mycardsum[s])
+				{
+					iamwinner[s] = 1;
+					/*21 안넘고 블랙잭도 아닌데 딜러보다 높은 사람은 승리*/
+				}
+				else
+				{
+					iamwinner[s] = 0;
+					/*21 안넘고 블랙잭도 아닌데 딜러보다 낮은 사람은 패배*/
+				}
+			} 
+
+			
 		}
 	}
 
@@ -146,6 +167,7 @@ int takemymoney()
 		{
 			bet[h] = 0;
 			/*베팅 액수는 초기화를 여기서 한다*/ 
+			/*졌을 경우 베팅액수가 날아간다.*/ 
 		}
 		else
 		{
@@ -154,10 +176,19 @@ int takemymoney()
 			bet[h] = 0;
 		}
 	}
-	printf ("\n%i달러 남으셨습니다. \n", mymoney[0]);
+	if (iamwinner[0]=1)
+	{
+		printf ("\n승리 축하드립니다.");
+	}
+	printf (" %i달러 남으셨습니다. \n", mymoney[0]);
 	for (h=1; h<N_player; h++)
 	{
-		printf ("\nNPC %i님, %i달러 남으셨습니다. \n", h, mymoney[h]);
+		printf ("\nNPC %i님, ", h);
+		if (iamwinner[h]=1)
+		{
+			printf ("승리 축하드립니다. ");
+		}
+		printf ("%i달러 남으셨습니다. \n", mymoney[h]);
 	}
 	/*베팅한 돈을 돌려주는 함수*/ 
 }
