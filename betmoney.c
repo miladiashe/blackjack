@@ -176,18 +176,27 @@ int takemymoney()
 			bet[h] = 0;
 		}
 	}
+	printf ("\n");
 	if (iamwinner[0]==1)
 	{
-		printf ("\n승리 축하드립니다.");
+		printf ("승리 축하드립니다.");
+	}
+	else
+	{
+		printf("베팅 금액을 잃으셨습니다.");
 	}
 	printf (" %i달러 남으셨습니다. \n", mymoney[0]);
 	for (h=1; h<N_player; h++)
 	{
 		printf ("\nNPC %i님, ", h);
-		if (iamwinner[h]=1)
+		if (iamwinner[h]==1)
 		{
 			printf ("승리 축하드립니다. ");
 		}
+		else
+		{
+			printf("베팅 금액을 잃으셨습니다.");
+		 } 
 		printf ("%i달러 남으셨습니다. \n", mymoney[h]);
 	}
 	/*베팅한 돈을 돌려주는 함수*/ 
